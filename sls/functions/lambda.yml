@@ -1,0 +1,6 @@
+NewProduct:
+  handler: src/functions/test.main
+  events:
+    - http:
+        method: post
+        path: test

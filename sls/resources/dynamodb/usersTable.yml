@@ -1,0 +1,13 @@
+# Caso seja necessario colocaremos index secundarios
+Resources:
+  usersTableDynamo:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:provider.environment.usersTableDynamo}
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST 

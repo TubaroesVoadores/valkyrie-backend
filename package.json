@@ -1,21 +1,25 @@
 {
   "name": "valkfly",
   "version": "2.2.0",
-  "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
   "main": "handler.js",
   "scripts": {
-    "test": "serverless-bundle test"
+    "test": "serverless-bundle test",
+    "deploy": "sls deploy --verbose"
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
-    "aws-sdk": "^2.868.0",
-    "serverless-bundle": "^3.2.1",
-    "serverless-dotenv-plugin": "^2.1.1",
-    "serverless-offline": "^5.3.3"
+    "aws-sdk": "^2.861.0",
+    "serverless-bundle": "4.2.2",
+    "webpack": "^4.46.0"
   },
   "dependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "query-string": "^6.14.1",
+    "serverless": "^2.53.1",
     "serverless-iam-roles-per-function": "^3.1.0",
-    "uuid": "^7.0.3"
+    "uuid": "^8.3.2"
   }
 }
