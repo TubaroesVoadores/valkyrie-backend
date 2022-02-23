@@ -1,0 +1,33 @@
+# NOTE: update this with your service name
+service: valkFly
+
+plugins:
+  - serverless-bundle # Package our functions with Webpack
+  # - serverless-offline
+  - serverless-dotenv-plugin # Load .env as environment variables
+  # - serverless-iam-roles-per-function
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+  environment:
+    productsTabledynamodb: ${self:service}-products
+
+package:
+  exclude:
+    - .serverless/**
+    - .git/**
+    - node_modules/**
+
+
+functions:
+  - ${file(sls/functions/newProduct.yml)}
+  - ${file(sls/functions/sendEmail.yml)}
+  - ${file(sls/functions/listProduct.yml)}
+resources:
+  - ${file(sls/resources/productsTable.yml)}
+  - ${file(sls/resources/api-gateway-errors.yml)}
