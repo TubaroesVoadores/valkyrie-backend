@@ -1,6 +1,8 @@
-NewProduct:
+test:
   handler: src/functions/test.main
   events:
     - http:
         method: post
         path: test
+        cors: true
+  iamRoleStatementsName: test-lambdaRole      

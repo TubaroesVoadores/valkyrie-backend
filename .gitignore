@@ -12,6 +12,9 @@
 # production
 /build
 
+# webpack
+/.webpack
+
 # misc
 .DS_Store
 
