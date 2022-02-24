@@ -3,17 +3,33 @@
   "version": "2.2.0",
   "main": "handler.js",
   "scripts": {
-    "test": "serverless-bundle test",
+    "test": "jest --silent --noStackTrace --runInBand",
+    "test:verbose": "jest",
+    "test:coverage": "npm test -- --coverage",
     "deploy": "sls deploy --verbose"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "aws-sdk": "^2.861.0",
+    "jest": "^26.6.3",
     "serverless-bundle": "4.2.2",
     "webpack": "^4.46.0"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@types/jest": "^26.0.15",
+    "babel-jest": "^26.6.3",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

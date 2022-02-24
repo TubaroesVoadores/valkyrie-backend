@@ -1,8 +1,8 @@
-test:
-  handler: src/functions/test.main
+func:
+  handler: src/functions/func.main
   events:
     - http:
         method: post
-        path: test
+        path: pedro
         cors: true
-  iamRoleStatementsName: test-lambdaRole      
+  iamRoleStatementsName: func-lambdaRole      

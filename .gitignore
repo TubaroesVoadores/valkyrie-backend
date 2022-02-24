@@ -15,6 +15,9 @@
 # webpack
 /.webpack
 
+# Jest
+coverage
+
 # misc
 .DS_Store
 
