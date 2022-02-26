@@ -19,7 +19,7 @@ export const main = async (event) => {
   const { usersTableDynamoName } = process.env;
 
   try {
-    const token = headers['x-Amz-Security-Token'];
+    const token = headers['X-Amz-Security-Token'] || headers['x-amz-security-token'];
 
     if (!token) {
       return new UnauthorizedError('Token is not valid.');
