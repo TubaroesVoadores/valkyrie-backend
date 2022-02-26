@@ -1,5 +1,3 @@
-// import { AuthorizationError } from '../utils';
-
 import { UnauthorizedError, dynamo, apiError } from '../utils';
 
 const generatePolicy = ({ allow }) => ({
@@ -21,7 +19,7 @@ export const main = async (event) => {
   const { usersTableDynamoName } = process.env;
 
   try {
-    const token = headers?.oedro;
+    const token = headers['x-Amz-Security-Token'];
 
     if (!token) {
       return new UnauthorizedError('Token is not valid.');
