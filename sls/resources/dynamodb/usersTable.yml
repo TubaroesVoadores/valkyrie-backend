@@ -3,7 +3,7 @@ Resources:
   usersTableDynamo:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:provider.environment.usersTableDynamo}
+      TableName: ${self:provider.environment.usersTableDynamoName}
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S

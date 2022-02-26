@@ -9,19 +9,20 @@ export const apiError = (error) => {
   switch (error.name) {
     case 'InvalidInputError':
       statusCode = 400;
-      body.error = error.message;
+      body.message = error.message;
       break;
     case 'RequestError':
-      body.error = error.message;
       statusCode = error?.status;
+      body.message = error.message;
       break;
     case 'NotAuthorizedError':
+    case 'UnauthorizedError':
       statusCode = 403;
-      body.error = error.message;
+      body.message = error.message;
       break;
     default:
       statusCode = 500;
-      body.error = "Couldn't fetch the search";
+      body.message = 'Internal server error';
       break;
   }
 
