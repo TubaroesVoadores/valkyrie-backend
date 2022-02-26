@@ -1,0 +1,7 @@
+{
+  "event": {
+    "headers": {
+      "x-amz-security-token": "xxx111bbb"
+    }
+  }
+}

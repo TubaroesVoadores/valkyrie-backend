@@ -5,4 +5,8 @@ func:
         method: post
         path: pedro
         cors: true
+        authorizer:
+          name: Authorizer
+          identitySource: method.request.header.X-Amz-Security-Token
+          type: request
   iamRoleStatementsName: func-lambdaRole      

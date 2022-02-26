@@ -1,0 +1,7 @@
+Authorizer:
+  handler: src/functions/authorizer.main
+  iamRoleStatementsName: func-lambdaRole
+  iamRoleStatements:  
+    - Effect: Allow
+      Action: dynamodb:GetItem
+      Resource: !GetAtt [usersTableDynamo, Arn]
