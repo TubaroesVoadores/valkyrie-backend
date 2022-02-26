@@ -2,20 +2,6 @@
 
 class CustomError extends Error { }
 
-export class InputError extends CustomError {
-  constructor(message) {
-    super(message);
-    this.name = 'InputError';
-  }
-}
-
-export class AuthorizationError extends CustomError {
-  constructor(message) {
-    super(message);
-    this.name = 'AuthorizationError';
-  }
-}
-
 export class NotFoundError extends CustomError {
   constructor(message) {
     super(message);
@@ -30,10 +16,33 @@ export class UnauthorizedError extends CustomError {
   }
 }
 
+export class ForbiddenError extends CustomError {
+  constructor(message) {
+    super(message);
+    this.name = 'ForbiddenError';
+  }
+}
+
+export class TimeoutError extends CustomError {
+  constructor(message) {
+    super(message);
+    this.name = 'TimeoutError';
+  }
+}
+
 export class InvalidInputError extends CustomError {
   constructor(message, errors) {
     super(message);
     this.name = 'InvalidInputError';
+    this.errors = errors;
+  }
+}
+
+export class RequestError extends CustomError {
+  constructor(message, status, errors) {
+    super(message);
+    this.name = 'RequestError';
+    this.status = status;
     this.errors = errors;
   }
 }
