@@ -4,14 +4,17 @@ plugins:
   - serverless-bundle 
   - serverless-iam-roles-per-function
 
+custom: 
+  stage: ${opt:stage, 'dev'}
+
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
+  stage: ${self:custom.stage}
   region: us-east-1
   versionFunctions: false
   environment:
-    usersTableDynamoName: ${self:service}-users
+    usersTableDynamoName: ${self:service}-${self:custom.stage}-users
     serviceName: ${self:service}
 
 package:
