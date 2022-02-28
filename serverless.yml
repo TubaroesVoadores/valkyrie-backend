@@ -30,3 +30,4 @@ functions:
 
 resources:
   - ${file(sls/resources/dynamodb/usersTable.yml)}
+  - ${file(sls/resources/cognito-user-pool.yml)}
