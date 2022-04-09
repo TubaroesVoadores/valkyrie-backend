@@ -8,7 +8,8 @@ custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkFly-backend
 
-aliases: # Create an alias to 'import' modules easily with a custom path
+# Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models'; 
+aliases:
   - Models: src/models
 
 provider:
