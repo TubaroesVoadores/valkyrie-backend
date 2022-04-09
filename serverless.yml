@@ -12,7 +12,7 @@ provider:
   versionFunctions: false
   environment:
     usersTableDynamoName: ${self:service}-users
-    imageTableDynamoName: ${self:service}-users
+    imagesTableDynamoName: ${self:service}-images
     serviceName: ${self:service}
 
 package:

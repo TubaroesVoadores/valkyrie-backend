@@ -1,8 +1,8 @@
 Resources:
-  imageTableDynamo:
+  imagesTableDynamo:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:provider.environment.imageTableDynamoName}
+      TableName: ${self:provider.environment.imagesTableDynamoName}
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S
