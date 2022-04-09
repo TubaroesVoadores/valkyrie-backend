@@ -8,6 +8,9 @@ custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkFly-backend
 
+aliases: # Create an alias to 'import' modules easily with a custom path
+  - Models: src/models
+
 provider:
   name: aws
   runtime: nodejs14.x
