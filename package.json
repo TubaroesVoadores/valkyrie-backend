@@ -6,7 +6,7 @@
     "test": "jest --silent --noStackTrace --runInBand",
     "test:verbose": "jest",
     "test:coverage": "npm test -- --coverage",
-    "deploy": "sls deploy --verbose"
+    "deploy": "sls deploy --verbose -s "
   },
   "babel": {
     "env": {

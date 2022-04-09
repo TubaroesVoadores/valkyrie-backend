@@ -1,6 +1,6 @@
 Authorizer:
   handler: src/functions/authorizer.main
-  iamRoleStatementsName: func-lambdaRole
+  iamRoleStatementsName: authorizer-lambdaRole
   iamRoleStatements:  
     - Effect: Allow
       Action: dynamodb:GetItem
