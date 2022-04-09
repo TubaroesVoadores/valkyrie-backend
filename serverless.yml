@@ -12,6 +12,7 @@ provider:
   versionFunctions: false
   environment:
     usersTableDynamoName: ${self:service}-users
+    imageTableDynamoName: ${self:service}-users
     serviceName: ${self:service}
 
 package:
@@ -26,4 +27,6 @@ functions:
 
 
 resources:
+  # dynamo
   - ${file(sls/resources/dynamodb/usersTable.yml)}
+  - ${file(sls/resources/dynamodb/imagesTable.yml)}
