@@ -18,6 +18,7 @@ provider:
     serviceName: ${self:custom.serviceName}
     usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
     imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
+    collectionsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-collections
 
 package:
   exclude:
@@ -34,3 +35,4 @@ resources:
   # dynamo
   - ${file(sls/resources/dynamodb/usersTable.yml)}
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
+  - ${file(sls/resources/dynamodb/collectionsTable.yml)}
