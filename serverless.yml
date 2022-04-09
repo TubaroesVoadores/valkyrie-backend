@@ -1,19 +1,23 @@
-service: valkFly-backend
+service: ${self:custom.serviceName}
 
 plugins:
   - serverless-bundle 
   - serverless-iam-roles-per-function
 
+custom: 
+  stage: ${opt:stage, 'dev'}
+  serviceName: valkFly-backend
+
 provider:
   name: aws
-  runtime: nodejs12.x
-  stage: dev
+  runtime: nodejs14.x
   region: us-east-1
   versionFunctions: false
   environment:
-    usersTableDynamoName: ${self:service}-users
-    imagesTableDynamoName: ${self:service}-images
-    serviceName: ${self:service}
+    stage: ${self:custom.stage}
+    serviceName: ${self:custom.serviceName}
+    usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
+    imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
 
 package:
   exclude:

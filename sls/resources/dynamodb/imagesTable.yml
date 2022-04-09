@@ -8,36 +8,34 @@ Resources:
           AttributeType: S
         - AttributeName: collectionId
           AttributeType: S
-        - AttributeName: response
-          AttributeType: S
-        - AttributeName: S3Link
-          AttributeType: S
         - AttributeName: createdAt
-          AttributeType: S
-        - AttributeName: updatedAt
-          AttributeType: S
-        - AttributeName: deletedAt
           AttributeType: S
       KeySchema:
         - AttributeName: id
           KeyType: HASH
       GlobalSecondaryIndexes:
-        - IndexName:  CollectionIdCreatedAtIndex
+        - IndexName:  CollectionDate
           KeySchema:
             - AttributeName: collectionId
               KeyType: HASH
             - AttributeName: createdAt
               KeyType: RANGE
-        - IndexName:  CollectionIdImageIdIndex
+          Projection:
+            ProjectionType: ALL
+        - IndexName:  CollectionImage
           KeySchema:
             - AttributeName: collectionId
               KeyType: HASH
             - AttributeName: id
               KeyType: RANGE
-        - IndexName:  imageIdCreatedIndex
+          Projection:
+            ProjectionType: ALL
+        - IndexName:  ImageDate
           KeySchema:
             - AttributeName: id
               KeyType: HASH
             - AttributeName: createdAt
               KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
       BillingMode: PAY_PER_REQUEST 
