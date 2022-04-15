@@ -18,7 +18,7 @@ Resources:
             ProjectionType: ALL
         - IndexName:  ProjectImage
           KeySchema:
-            - AttributeName: ProjectId
+            - AttributeName: projectId
               KeyType: HASH
             - AttributeName: id
               KeyType: RANGE
