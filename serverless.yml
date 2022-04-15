@@ -1,4 +1,4 @@
-service: valkFly-backend
+service: ${self:custom.serviceName}
 
 plugins:
   - serverless-bundle 
@@ -6,16 +6,23 @@ plugins:
 
 custom: 
   stage: ${opt:stage, 'dev'}
+  serviceName: valkFly-backend
+
+# Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models'; 
+aliases:
+  - Models: src/models
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  stage: ${self:custom.stage}
+  runtime: nodejs14.x
   region: us-east-1
   versionFunctions: false
   environment:
-    usersTableDynamoName: ${self:service}-${self:custom.stage}-users
-    serviceName: ${self:service}
+    stage: ${self:custom.stage}
+    serviceName: ${self:custom.serviceName}
+    usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
+    imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
+    collectionsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-collections
 
 package:
   exclude:
@@ -29,6 +36,7 @@ functions:
 
 
 resources:
+  # dynamo
   - ${file(sls/resources/dynamodb/usersTable.yml)}
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
   - ${file(sls/resources/dynamodb/collectionsTable.yml)}
