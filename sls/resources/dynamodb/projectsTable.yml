@@ -1,8 +1,8 @@
 Resources:
-  collectionsTableDynamo:
+  projectsTableDynamo:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:provider.environment.collectionsTableDynamoName}
+      TableName: ${self:provider.environment.projectsTableDynamoName}
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S
@@ -22,7 +22,7 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: ALL
-        - IndexName:  UserCollection
+        - IndexName:  UserProject
           KeySchema:
             - AttributeName: userId
               KeyType: HASH
@@ -30,7 +30,7 @@ Resources:
               KeyType: RANGE
           Projection:
             ProjectionType: ALL
-        - IndexName:  CollectionDate
+        - IndexName:  ProjectDate
           KeySchema:
             - AttributeName: id
               KeyType: HASH

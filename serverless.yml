@@ -17,8 +17,7 @@ provider:
     stage: ${self:custom.stage}
     serviceName: ${self:custom.serviceName}
     usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
-    collectionsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-collections
-    imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
+    projectsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-projects
 
 package:
   exclude:
