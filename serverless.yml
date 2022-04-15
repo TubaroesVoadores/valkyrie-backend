@@ -41,4 +41,4 @@ resources:
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
   - ${file(sls/resources/dynamodb/collectionsTable.yml)}
   - ${file(sls/resources/cognitoUser/cognito-user-pool.yml)}
-  - ${file(sls/resources/cognitoIdentity/cognito-user-pool.yml)}
+  - ${file(sls/resources/cognitoIdentity/cognito-identity-pool.yml)}
