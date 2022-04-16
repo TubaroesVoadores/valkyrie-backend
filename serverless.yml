@@ -1,14 +1,14 @@
 service: ${self:custom.serviceName}
 
 plugins:
-  - serverless-bundle 
+  - serverless-bundle
   - serverless-iam-roles-per-function
 
-custom: 
+custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkFly-backend
 
-# Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models'; 
+# Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models';
 aliases:
   - Models: src/models
 
@@ -20,9 +20,9 @@ provider:
   environment:
     stage: ${self:custom.stage}
     serviceName: ${self:custom.serviceName}
-    usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
-    imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
-    collectionsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-collections
+    usersTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-users
+    imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
+    collectionsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-collections
 
 package:
   exclude:
@@ -33,7 +33,7 @@ package:
 functions:
   - ${file(sls/functions/lambda.yml)}
   - ${file(sls/functions/authorizer.yml)}
-
+  - ${file(sls/functions/crudUserDynamoDB.yml)}
 
 resources:
   # dynamo
