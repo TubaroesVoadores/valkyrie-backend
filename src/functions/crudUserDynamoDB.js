@@ -5,10 +5,8 @@ const ddb = new AWS.DynamoDB({ apiVersion: "2012-10-08" });
 export const main = async (event, context) => {
   console.log(event);
 
-  const date = new Date();
-
   const { usersTableDynamoName } = process.env;
-  const regionEnv = process.env.REGION;
+  const regionEnv = process.region;
 
   AWS.config.update({ region: regionEnv });
 
@@ -21,7 +19,6 @@ export const main = async (event, context) => {
         __typename: { S: "User" },
         username: { S: event.userName },
         email: { S: event.request.userAttributes.email },
-        createdAt: { S: date.toISOString() },
       },
       TableName: usersTableDynamoName,
     };
