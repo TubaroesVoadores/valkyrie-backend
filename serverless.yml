@@ -22,7 +22,7 @@ provider:
     serviceName: ${self:custom.serviceName}
     usersTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-users
     imagesTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-images
-    collectionsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-collections
+    projectsTableDynamoName:  ${self:custom.serviceName}-${self:custom.stage}-projects
 
 package:
   exclude:

@@ -8,21 +8,16 @@ export default {
     default: uuidv4,
     hashKey: true,
   },
-  projectId: {
+  userId: {
     type: String,
-    required: true,
     index: {
-      name: 'ProjectImage',
+      name: 'UserProject',
       rangeKey: 'id',
       global: true,
     },
   },
-  data: {
-    type: Object,
-  },
-  s3link: {
+  name: {
     type: String,
-    required: true,
   },
   createdAt: {
     type: String,
