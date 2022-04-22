@@ -6,7 +6,7 @@ Resources:
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: S
-        - AttributeName: collectionId
+        - AttributeName: projectId
           AttributeType: S
         - AttributeName: createdAt
           AttributeType: S
@@ -14,17 +14,9 @@ Resources:
         - AttributeName: id
           KeyType: HASH
       GlobalSecondaryIndexes:
-        - IndexName:  CollectionDate
+        - IndexName:  ProjectImage
           KeySchema:
-            - AttributeName: collectionId
-              KeyType: HASH
-            - AttributeName: createdAt
-              KeyType: RANGE
-          Projection:
-            ProjectionType: ALL
-        - IndexName:  CollectionImage
-          KeySchema:
-            - AttributeName: collectionId
+            - AttributeName: projectId
               KeyType: HASH
             - AttributeName: id
               KeyType: RANGE
