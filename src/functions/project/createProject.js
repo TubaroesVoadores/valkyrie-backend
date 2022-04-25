@@ -18,12 +18,12 @@ export const main = async (event) => {
   try {
     const { name, userId } = getEventParams(event);
 
-    const response = await Projects.create({
+    const project = await Projects.create({
       name,
       userId,
     });
 
-    return apiResponse({ response }, 200);
+    return apiResponse({ message: 'New project created!', project }, 200);
   } catch (error) {
     return apiError(error);
   }
