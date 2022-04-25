@@ -7,3 +7,12 @@ CreateProject:
         cors: true
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
   
+DeleteProject:
+  handler: src/functions/project/createProject.main
+  events:
+    - http:
+        method: delete
+        path: projects/{projectId}
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
+  
