@@ -11,6 +11,7 @@ custom:
 # Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models'; 
 aliases:
   - Models: src/models
+  - Utils: src/utils
 
 provider:
   name: aws
@@ -33,10 +34,11 @@ package:
 functions:
   - ${file(sls/functions/lambda.yml)}
   - ${file(sls/functions/authorizer.yml)}
+  - ${file(sls/functions/projects.yml)}
 
 
 resources:
   # dynamo
   - ${file(sls/resources/dynamodb/usersTable.yml)}
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
-  - ${file(sls/resources/dynamodb/collectionsTable.yml)}
+  - ${file(sls/resources/dynamodb/projectsTable.yml)}

@@ -1,0 +1,9 @@
+CreateProject:
+  handler: src/functions/project/createProject.main
+  events:
+    - http:
+        method: post
+        path: projects
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
+  
