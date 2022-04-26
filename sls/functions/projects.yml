@@ -1,5 +1,5 @@
 CreateProject:
-  handler: src/functions/project/createProject.main
+  handler: src/functions/projects/createProject.main
   events:
     - http:
         method: post
@@ -8,7 +8,7 @@ CreateProject:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
   
 DeleteProject:
-  handler: src/functions/project/createProject.main
+  handler: src/functions/projects/createProject.main
   events:
     - http:
         method: delete
