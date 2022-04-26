@@ -6,13 +6,22 @@ CreateProject:
         path: projects
         cors: true
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
-  
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: !GetAtt [projectsTableDynamo, Arn]  
+
 DeleteProject:
-  handler: src/functions/projects/createProject.main
+  handler: src/functions/projects/deleteProject.main
   events:
     - http:
         method: delete
         path: projects/{projectId}
         cors: true
-  iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
-  
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-delete-project
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: !GetAtt [projectsTableDynamo, Arn]

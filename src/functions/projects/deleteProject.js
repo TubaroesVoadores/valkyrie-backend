@@ -11,19 +11,20 @@ import { Projects } from '../../models';
  * @description This api is responsible for deleting a project.
  * @param {Object} event - Base event object of AWS Lambda.
  * @param {Object} event.pathParams.projectId - Project's name.
- * @command sls invoke local -f DeleteProject -p tests/mocks/Projects/deleteProject.json
+ * @command sls invoke local -f DeleteProject -p tests/mocks/Projects/deleteProject.json -s STAGE
  */
 
 export const main = async (event) => {
   try {
     const { projectId } = getEventParams(event);
 
-    const project = await Projects.create({
+    const project = await Projects.update({
       id: projectId,
-      deleteAt: formatISO(new Date()),
+      deletedAt: formatISO(new Date()),
+      updatedAt: formatISO(new Date()),
     });
 
-    return apiResponse({ message: 'New project created!', project }, 200);
+    return apiResponse({ message: 'Project deleted!', project }, 200);
   } catch (error) {
     return apiError(error);
   }
