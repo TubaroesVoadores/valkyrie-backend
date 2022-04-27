@@ -33,7 +33,6 @@ package:
 functions:
   - ${file(sls/functions/lambda.yml)}
   - ${file(sls/functions/authorizer.yml)}
-  - ${file(sls/functions/crudUserDynamoDB.yml)}
 
 resources:
   # dynamo

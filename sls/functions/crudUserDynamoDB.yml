@@ -1,8 +1,0 @@
-crudUserDynamoDB:
-  handler: src/functions/crudUserDynamoDB.main
-  iamRoleStatementsName: crudUserDynamoDB-lambdaRole
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-      Resource: !GetAtt [usersTableDynamo, Arn]
