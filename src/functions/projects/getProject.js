@@ -38,15 +38,8 @@ export const main = async (event) => {
         .exec()
     ).toJSON();
 
-    const response = {
-      ...project,
-      images,
-    };
-
-    console.dir({ response }, { depth: 1000 });
-
     return apiResponse({
-      message: 'Project deleted!',
+      message: 'Project successfully fetch!',
       project: {
         ...project,
         images,
