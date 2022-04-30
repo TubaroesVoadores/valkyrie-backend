@@ -10,7 +10,7 @@ import { Projects } from '../../models';
  * @name DeleteProject
  * @description This api is responsible for deleting a project.
  * @param {Object} event - Base event object of AWS Lambda.
- * @param {Object} event.pathParams.projectId - Project's name.
+ * @param {Object} event.pathParams.projectId - Project's id.
  * @command sls invoke local -f DeleteProject -p tests/mocks/Projects/deleteProject.json -s STAGE
  */
 

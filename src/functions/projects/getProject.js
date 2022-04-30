@@ -8,9 +8,9 @@ import { Images, Projects } from '../../models';
 
 /**
  * @name GetProject
- * @description This api is responsible for deleting a project.
+ * @description This api is responsible for getting all images and infos of a project.
  * @param {Object} event - Base event object of AWS Lambda.
- * @param {Object} event.pathParams.projectId - Project's name.
+ * @param {Object} event.pathParams.projectId - Project's id.
  * @command sls invoke local -f GetProject -p tests/mocks/Projects/getProject.json -s STAGE
  */
 

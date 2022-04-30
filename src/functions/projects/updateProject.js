@@ -10,7 +10,8 @@ import { Projects } from '../../models';
  * @name UpdateProject
  * @description This api is responsible for updating a project.
  * @param {Object} event - Base event object of AWS Lambda.
- * @param {Object} event.pathParams.projectId - Project's name.
+ * @param {Object} event.pathParams.projectId - Project's id.
+ * @param {Object} event.body.name - Project's name.
  * @command sls invoke local -f UpdateProject -p tests/mocks/Projects/updateProject.json -s STAGE
  */
 
