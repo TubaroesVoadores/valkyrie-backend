@@ -1,6 +1,6 @@
 Authorizer:
   handler: src/functions/authorizer.main
-  iamRoleStatementsName: authorizer-lambdaRole
+  iamRoleStatementsName: ${self:custom.stage}-lambdaRole
   iamRoleStatements:  
     - Effect: Allow
       Action: dynamodb:GetItem
