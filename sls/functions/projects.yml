@@ -39,3 +39,21 @@ UpdateProject:
       Action: 
         - dynamodb:PutItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
+
+GetProject:
+  handler: src/functions/projects/getProject.main
+  events:
+    - http:
+        method: get
+        path: projects/{projectId}
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-get-project
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:GetItem
+      Resource: !GetAtt [projectsTableDynamo, Arn]
+    - Effect: Allow
+      Action: 
+        - dynamodb:GetItem
+      Resource: !GetAtt [imagesTableDynamo, Arn]
