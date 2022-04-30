@@ -25,3 +25,17 @@ DeleteProject:
       Action: 
         - dynamodb:PutItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
+
+UpdateProject:
+  handler: src/functions/projects/updateProject.main
+  events:
+    - http:
+        method: put
+        path: projects/{projectId}
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-update-project
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: !GetAtt [projectsTableDynamo, Arn]
