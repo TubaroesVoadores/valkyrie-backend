@@ -57,3 +57,17 @@ GetProject:
       Action: 
         - dynamodb:GetItem
       Resource: !GetAtt [imagesTableDynamo, Arn]
+
+ListProjects:
+  handler: src/functions/projects/listProjects.main
+  events:
+    - http:
+        method: get
+        path: projects
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-list-projects
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:GetItem
+      Resource: !GetAtt [projectsTableDynamo, Arn]
