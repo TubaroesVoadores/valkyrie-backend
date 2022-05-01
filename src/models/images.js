@@ -1,10 +1,15 @@
 import dynamoose from 'dynamoose';
 import { imagesSchema } from './schemas';
 
-const schema = new dynamoose.Schema(imagesSchema, {
-  saveUnknown: false, // Assim vamos salvar só o que queremos
-  timestamps: false,
-});
+const schema = new dynamoose.Schema(
+  imagesSchema,
+  {
+    saveUnknown: [
+      'data.**', // Assim vamos salvar valores desconhecidos só o que vierem dentro desse objetos data
+    ],
+    timestamps: false,
+  },
+);
 
 export const Images = dynamoose.model(
   process.env.imagesTableDynamoName,
