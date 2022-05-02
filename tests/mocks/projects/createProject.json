@@ -1,6 +1,9 @@
 {
   "body": {
-    "name": "Olá mundo"
+    "name": "Olá mundo",
+    "city": "Belem",
+    "state": "PA",
+    "country": "Brasil"
   },
   "requestContext": {
     "identity": {

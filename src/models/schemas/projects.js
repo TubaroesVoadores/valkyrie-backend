@@ -20,6 +20,19 @@ export default {
     required: true,
     type: String,
   },
+  city: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  status: {
+    type: String,
+    default: 'processing',
+  },
+  country: {
+    type: String,
+  },
   createdAt: {
     type: String,
     required: true,

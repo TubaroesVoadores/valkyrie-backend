@@ -17,11 +17,24 @@ import { Projects } from '../../models';
 
 export const main = async (event) => {
   try {
-    const { projectId, name } = getEventParams(event);
+    const {
+      projectId,
+      name,
+      status,
+      userId,
+      city,
+      state,
+      country,
+    } = getEventParams(event);
 
     const project = await Projects.update({
       id: projectId,
       name,
+      userId,
+      city,
+      state,
+      country,
+      status,
       updatedAt: formatISO(new Date()),
     });
 
