@@ -1,7 +1,0 @@
-Authorizer:
-  handler: src/functions/authorizer.main
-  iamRoleStatementsName: ${self:custom.stage}-lambdaRole
-  iamRoleStatements:  
-    - Effect: Allow
-      Action: dynamodb:GetItem
-      Resource: !GetAtt [usersTableDynamo, Arn]

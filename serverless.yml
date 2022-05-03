@@ -21,7 +21,6 @@ provider:
   environment:
     stage: ${self:custom.stage}
     serviceName: ${self:custom.serviceName}
-    usersTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-users
     imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
     projectsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-projects
 
@@ -32,13 +31,10 @@ package:
     - node_modules/**
 
 functions:
-  - ${file(sls/functions/lambda.yml)}
-  - ${file(sls/functions/authorizer.yml)}
   - ${file(sls/functions/projects.yml)}
 
 resources:
   # dynamo
-  # - ${file(sls/resources/dynamodb/usersTable.yml)}
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
   - ${file(sls/resources/dynamodb/projectsTable.yml)}
   - ${file(sls/resources/cognitoUser/cognito-user-pool.yml)}
