@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 require('dotenv').config();
 
 const userPassword = generator.generate({
-  length: 10,
+  length: 12,
   numbers: true,
   uppercase: true,
   lowercase: true,
