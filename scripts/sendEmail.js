@@ -13,10 +13,9 @@ console.log(userPassword);
 
 const registerUser = () => {
   AWS.config.update({
-    region: 'us-east-1', // change region if required
+    region: 'us-east-1',
   });
 
-  // eslint-disable-next-line operator-linebreak
   const cognitoidentityserviceprovider =
     new AWS.CognitoIdentityServiceProvider();
 

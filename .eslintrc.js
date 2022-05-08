@@ -10,6 +10,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'operator-linebreak': 'off',
     'no-console': 'off',
     'linebreak-style': 'off',
     'import/prefer-default-export': 'off',
