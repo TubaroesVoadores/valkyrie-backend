@@ -6,7 +6,8 @@
     "test": "jest --silent --noStackTrace --runInBand",
     "test:verbose": "jest",
     "test:coverage": "npm test -- --coverage",
-    "deploy": "sls deploy --verbose -s "
+    "deploy": "sls deploy --verbose -s ",
+    "script": "node scripts/sendEmail.js"
   },
   "babel": {
     "env": {

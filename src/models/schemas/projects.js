@@ -28,7 +28,8 @@ export default {
   },
   status: {
     type: String,
-    default: 'processing',
+    enum: ['CRIADO', 'PROCESSANDO', 'FINALIZADO'],
+    default: 'CRIADO',
   },
   country: {
     type: String,
