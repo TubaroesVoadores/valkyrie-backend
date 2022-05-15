@@ -12,6 +12,7 @@ const registerUser = () => {
   const params = {
     UserPoolId: process.env.COGNITO_USER_POOL_ID,
     Username: process.argv[2],
+    ForceAliasCreation: true,
     UserAttributes: [
       {
         Name: 'email',
@@ -20,6 +21,10 @@ const registerUser = () => {
       {
         Name: 'name',
         Value: process.argv[3],
+      },
+      {
+        Name: 'email_verified',
+        Value: 'true',
       },
     ],
   };
