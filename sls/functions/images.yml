@@ -1,0 +1,17 @@
+CreateImages:
+  handler: src/functions/images/createImage.main
+  events:
+    - http:
+        method: post
+        path: images
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-image
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: !GetAtt [imagesTableDynamo, Arn]  
+    - Effect: Allow
+      Action: 
+        - s3:PutItem
+      Resource: !GetAtt [ImagesBucket, Arn]  

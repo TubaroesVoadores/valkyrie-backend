@@ -1,14 +1,13 @@
 service: ${self:custom.serviceName}
 
 plugins:
-  - serverless-bundle
   - serverless-iam-roles-per-function
+  - serverless-bundle
 
 custom:
   stage: ${opt:stage, 'dev'}
-  serviceName: valkFly-backend
+  serviceName: valkyrie-backend
 
-# Isso serve para facilitar o import, invés de você fazer isso import * from '../src/models' pode ser assim import * from 'Models';
 aliases:
   - Models: src/models
   - Utils: src/utils
@@ -23,6 +22,7 @@ provider:
     serviceName: ${self:custom.serviceName}
     imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
     projectsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-projects
+    imagesBucketName: ${self:service}-${self:custom.stage}-images-bucket
 
 package:
   exclude:
@@ -32,10 +32,16 @@ package:
 
 functions:
   - ${file(sls/functions/projects.yml)}
+  - ${file(sls/functions/images.yml)}
 
 resources:
   # dynamo
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
   - ${file(sls/resources/dynamodb/projectsTable.yml)}
+  
+  # Cognito
   - ${file(sls/resources/cognitoUser/cognito-user-pool.yml)}
   - ${file(sls/resources/cognitoIdentity/cognito-identity-pool.yml)}
+
+  # S3
+  - ${file(sls/resources/s3/imagesBucket.yml)}

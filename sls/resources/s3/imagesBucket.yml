@@ -1,0 +1,6 @@
+Resources:
+  ImagesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:provider.environment.imagesBucketName}
+      AccessControl: PublicRead
