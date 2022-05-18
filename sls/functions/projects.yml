@@ -8,9 +8,9 @@ CreateProject:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:PutItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]  
+      Resource: !GetAtt [projectsTableDynamo, Arn]
 
 DeleteProject:
   handler: src/functions/projects/deleteProject.main
@@ -22,7 +22,7 @@ DeleteProject:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-delete-project
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:PutItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
 
@@ -36,7 +36,7 @@ UpdateProject:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-update-project
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:PutItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
 
@@ -50,11 +50,11 @@ GetProject:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-get-project
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:GetItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:GetItem
       Resource: !GetAtt [imagesTableDynamo, Arn]
 
@@ -68,6 +68,15 @@ ListProjects:
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-list-projects
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - dynamodb:GetItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
+
+sendEmailProject:
+  handler: src/functions/projects/sendEmailProject.main
+  events:
+    - http:
+        method: post
+        path: projects
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-send-email-project

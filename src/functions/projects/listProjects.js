@@ -1,8 +1,4 @@
-import {
-  apiError,
-  apiResponse,
-  getEventParams,
-} from '../../utils';
+import { apiError, apiResponse, getEventParams } from '../../utils';
 import { Projects } from '../../models';
 
 /**
@@ -18,8 +14,7 @@ export const main = async (event) => {
     const { userId } = getEventParams(event);
 
     const projects = (
-      await Projects
-        .query('userId')
+      await Projects.query('userId')
         .eq(userId)
         .where('deletedAt')
         .not()
@@ -27,10 +22,13 @@ export const main = async (event) => {
         .exec()
     ).toJSON();
 
-    return apiResponse({
-      message: 'Project deleted!',
-      projects,
-    }, 200);
+    return apiResponse(
+      {
+        message: 'Project listed!',
+        projects,
+      },
+      200,
+    );
   } catch (error) {
     return apiError(error);
   }
