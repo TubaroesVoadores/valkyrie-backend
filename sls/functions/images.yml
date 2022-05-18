@@ -29,3 +29,17 @@ WebhookImage:
       Action: 
         - dynamodb:PutItem
       Resource: !GetAtt [imagesTableDynamo, Arn]
+
+GetImage:
+  handler: src/functions/images/getImage.main
+  events:
+    - http:
+        method: get
+        path: images/{imageId}
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-get-image
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:GetItem
+      Resource: !GetAtt [imagesTableDynamo, Arn]
