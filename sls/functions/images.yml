@@ -15,3 +15,17 @@ CreateImages:
       Action: 
         - s3:PutItem
       Resource: !GetAtt [ImagesBucket, Arn]  
+
+WebhookImage:
+  handler: src/functions/images/webhookImage.main
+  events:
+    - http:
+        method: post
+        path: webhook/image
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-webhook-image
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: !GetAtt [imagesTableDynamo, Arn]
