@@ -1,15 +1,5 @@
-const generator = require('generate-password');
 const AWS = require('aws-sdk');
 require('dotenv').config();
-
-const userPassword = generator.generate({
-  length: 12,
-  numbers: true,
-  uppercase: true,
-  lowercase: true,
-  symbols: true,
-});
-console.log(userPassword);
 
 const registerUser = () => {
   AWS.config.update({
@@ -21,16 +11,20 @@ const registerUser = () => {
 
   const params = {
     UserPoolId: process.env.COGNITO_USER_POOL_ID,
-    Username: process.env.USER_EMAIL,
-    TemporaryPassword: userPassword,
+    Username: process.argv[2],
+    ForceAliasCreation: true,
     UserAttributes: [
       {
         Name: 'email',
-        Value: process.env.USER_EMAIL,
+        Value: process.argv[2],
       },
       {
         Name: 'name',
-        Value: process.env.NAME,
+        Value: process.argv[3],
+      },
+      {
+        Name: 'email_verified',
+        Value: 'true',
       },
     ],
   };
