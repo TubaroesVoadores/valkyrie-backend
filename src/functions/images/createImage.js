@@ -39,7 +39,6 @@ export const main = async (event) => {
 
       const img = await Images.create({
         projectId,
-        image,
         id,
         s3link,
       });
@@ -49,7 +48,7 @@ export const main = async (event) => {
 
     // await Promise.allSettled(callImageProcessor(images));
 
-    return apiResponse({ message: 'New images created!', images }, 200);
+    return apiResponse({ message: 'New images created!', images, projectId }, 200);
   } catch (error) {
     return apiError(error);
   }

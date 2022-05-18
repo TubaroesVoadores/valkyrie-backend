@@ -24,6 +24,10 @@ export default {
     type: String,
     required: true,
   },
+  s3linkFiltered: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: String,
     required: true,
