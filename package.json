@@ -6,7 +6,8 @@
     "test": "jest --silent --noStackTrace --runInBand",
     "test:verbose": "jest",
     "test:coverage": "npm test -- --coverage",
-    "deploy": "sls deploy --verbose -s "
+    "deploy": "sls deploy --verbose -s ",
+    "script": "node scripts/sendEmail.js"
   },
   "babel": {
     "env": {
@@ -31,12 +32,13 @@
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@types/jest": "^26.0.15",
-    "aws-sdk": "^2.861.0",
+    "aws-sdk": "^2.1130.0",
     "babel-jest": "^26.6.3",
     "date-fns": "^2.28.0",
+    "dotenv": "^16.0.0",
     "dynamoose": "^2.8.5",
-    "file-type": "^17.1.1",
-    "mime": "^3.0.0",
+    "nodemailer": "^6.7.5",
+    "nodemailer-smtp-transport": "^2.7.4",
     "query-string": "^6.14.1",
     "serverless": "^2.53.1",
     "serverless-iam-roles-per-function": "^3.1.0",

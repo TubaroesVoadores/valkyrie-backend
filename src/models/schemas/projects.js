@@ -20,6 +20,20 @@ export default {
     required: true,
     type: String,
   },
+  city: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  status: {
+    type: String,
+    enum: ['CRIADO', 'PROCESSANDO', 'FINALIZADO'],
+    default: 'CRIADO',
+  },
+  country: {
+    type: String,
+  },
   createdAt: {
     type: String,
     required: true,

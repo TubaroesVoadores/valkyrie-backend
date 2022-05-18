@@ -16,11 +16,20 @@ import { Projects } from '../../models';
 
 export const main = async (event) => {
   try {
-    const { name, userId } = getEventParams(event);
+    const {
+      name,
+      userId,
+      city,
+      state,
+      country,
+    } = getEventParams(event);
 
     const project = await Projects.create({
       name,
       userId,
+      city,
+      state,
+      country,
     });
 
     return apiResponse({ message: 'New project created!', project }, 200);
