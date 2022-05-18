@@ -2,6 +2,7 @@ import { formatISO } from 'date-fns';
 import {
   apiError,
   apiResponse,
+  createImagesBucket,
   getEventParams,
 } from '../../utils';
 import { Images } from '../../models';
@@ -16,11 +17,16 @@ export const main = async (event) => {
     const {
       imageId,
       data,
+      projectId,
+      file,
     } = getEventParams(event);
+
+    const { s3link } = createImagesBucket({ projectId, file, isFiltered: true });
 
     const image = await Images.update({
       id: imageId,
       data,
+      filteredImageLink: s3link,
       updatedAt: formatISO(new Date()),
     });
 

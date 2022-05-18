@@ -24,7 +24,7 @@ export default {
     type: String,
     required: true,
   },
-  s3linkFiltered: {
+  filteredImageLink: {
     type: String,
     required: true,
   },
