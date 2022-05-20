@@ -9,12 +9,12 @@ CreateImages:
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:PutItem
-      Resource: !GetAtt [imagesTableDynamo, Arn]  
+        - dynamodb:*
+      Resource: '*'  
     - Effect: Allow
       Action: 
-        - s3:PutItem
-      Resource: !GetAtt [ImagesBucket, Arn]  
+        - s3:*
+      Resource: '*'  
 
 WebhookImage:
   handler: src/functions/images/webhookImage.main
@@ -27,8 +27,12 @@ WebhookImage:
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:PutItem
-      Resource: !GetAtt [imagesTableDynamo, Arn]
+        - dynamodb:*
+      Resource: '*'
+    - Effect: Allow
+      Action: 
+        - s3:*
+      Resource: '*'  
 
 GetImage:
   handler: src/functions/images/getImage.main
@@ -41,5 +45,5 @@ GetImage:
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:GetItem
-      Resource: !GetAtt [imagesTableDynamo, Arn]
+        - dynamodb:*
+      Resource: '*'

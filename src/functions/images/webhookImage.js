@@ -17,21 +17,21 @@ export const main = async (event) => {
     const {
       imageId,
       data,
-      projectId,
-      file,
+      file: image,
     } = getEventParams(event);
 
-    const { s3link } = createImagesBucket({ projectId, file, isFiltered: true });
+    const { s3link } = await createImagesBucket({ image, isFiltered: true });
 
-    const image = await Images.update({
+    const imageFiltered = await Images.update({
       id: imageId,
       data,
       filteredImageLink: s3link,
       updatedAt: formatISO(new Date()),
     });
 
-    return apiResponse({ message: 'image updated!', image }, 200);
+    return apiResponse({ message: 'image updated!', imageFiltered }, 200);
   } catch (error) {
+    console.log(error);
     return apiError(error);
   }
 };

@@ -35,7 +35,7 @@ export const main = async (event) => {
     if (project) throw new NotFoundError('Project not found!');
 
     const images = await Promise.all(files.map(async ({ image }) => {
-      const { s3link, id } = await createImagesBucket({ image, projectId });
+      const { s3link, id } = await createImagesBucket({ image });
 
       const img = await Images.create({
         projectId,

@@ -1,7 +1,7 @@
 import { S3 } from 'aws-sdk';
 import { v4 as uuidv4 } from 'uuid';
 
-export const createImagesBucket = async ({ image, isFiltered, projectId }) => {
+export const createImagesBucket = async ({ image, isFiltered = false }) => {
   const s3 = new S3();
   const data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
@@ -10,7 +10,7 @@ export const createImagesBucket = async ({ image, isFiltered, projectId }) => {
   try {
     const params = {
       Bucket: process.env.imagesBucketName,
-      Key: `${projectId}/${id}`,
+      Key: id,
       Body: data,
       ContentType: 'image/jpg',
       ACL: 'public-read',
