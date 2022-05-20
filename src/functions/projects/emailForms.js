@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer';
 import { apiError, apiResponse, getEventParams } from '../../utils';
 
-require('dotenv').config();
-
 /**
  * @name CreateProject
  * @description This api is responsible for creating a new project.
@@ -29,7 +27,7 @@ export const main = async (event) => {
     const mailSent = await transport.sendMail({
       subject: 'Solicitação de criação de novo projeto',
       from: `Valkyrie<${process.env.EMAIL}>`,
-      to: 'valkyrie.cesupa@gmail.com',
+      to: process.env.EMAIL,
       html: `
             <html>
             <body style="color: black; background-color: #f6f9f6">
