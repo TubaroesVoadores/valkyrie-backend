@@ -5,12 +5,13 @@ CreateProject:
         method: post
         path: projects
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-create-project
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:PutItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]  
+        - dynamodb:*
+      Resource: '*'
 
 DeleteProject:
   handler: src/functions/projects/deleteProject.main
@@ -19,12 +20,13 @@ DeleteProject:
         method: delete
         path: projects/{projectId}
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-delete-project
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:PutItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]
+        - dynamodb:*
+      Resource: '*'
 
 UpdateProject:
   handler: src/functions/projects/updateProject.main
@@ -33,12 +35,13 @@ UpdateProject:
         method: put
         path: projects/{projectId}
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-update-project
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:PutItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]
+        - dynamodb:*
+      Resource: '*'
 
 GetProject:
   handler: src/functions/projects/getProject.main
@@ -47,17 +50,14 @@ GetProject:
         method: get
         path: projects/{projectId}
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-get-project
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:GetItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]
-    - Effect: Allow
-      Action: 
-        - dynamodb:GetItem
-      Resource: !GetAtt [imagesTableDynamo, Arn]
-
+        - dynamodb:*
+      Resource: '*'
+  
 ListProjects:
   handler: src/functions/projects/listProjects.main
   events:
@@ -65,9 +65,10 @@ ListProjects:
         method: get
         path: projects
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-list-projects
   iamRoleStatements:
     - Effect: Allow
       Action: 
-        - dynamodb:GetItem
-      Resource: !GetAtt [projectsTableDynamo, Arn]
+        - dynamodb:*
+      Resource: '*'  

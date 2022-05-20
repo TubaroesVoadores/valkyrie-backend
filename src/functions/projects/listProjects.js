@@ -14,6 +14,7 @@ import { Projects } from '../../models';
  */
 
 export const main = async (event) => {
+  console.log(event);
   try {
     const { userId } = getEventParams(event);
 
@@ -27,11 +28,14 @@ export const main = async (event) => {
         .exec()
     ).toJSON();
 
+    console.log('project', { projects });
+
     return apiResponse({
-      message: 'Project deleted!',
+      message: 'Projects successfully fetch',
       projects,
     }, 200);
   } catch (error) {
+    console.error('Error', { error });
     return apiError(error);
   }
 };

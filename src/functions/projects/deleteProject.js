@@ -24,8 +24,11 @@ export const main = async (event) => {
       updatedAt: formatISO(new Date()),
     });
 
+    console.log('project', { project });
+
     return apiResponse({ message: 'Project deleted!', project }, 200);
   } catch (error) {
+    console.error('Error', { error });
     return apiError(error);
   }
 };
