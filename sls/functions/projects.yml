@@ -72,11 +72,11 @@ ListProjects:
         - dynamodb:GetItem
       Resource: !GetAtt [projectsTableDynamo, Arn]
 
-sendEmailProject:
-  handler: src/functions/projects/sendEmailProject.main
+EmailForms:
+  handler: src/functions/projects/emailForms.main
   events:
     - http:
         method: post
-        path: projects
+        path: projects/emailForms
         cors: true
-  iamRoleStatementsName: ${self:service}-${self:custom.stage}-send-email-project
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-email-forms
