@@ -1,8 +1,4 @@
-import {
-  apiError,
-  apiResponse,
-  getEventParams,
-} from '../../utils';
+import { apiError, apiResponse, getEventParams } from '../../utils';
 import { Projects } from '../../models';
 
 /**
@@ -19,8 +15,7 @@ export const main = async (event) => {
     const { userId } = getEventParams(event);
 
     const projects = (
-      await Projects
-        .query('userId')
+      await Projects.query('userId')
         .eq(userId)
         .where('deletedAt')
         .not()
