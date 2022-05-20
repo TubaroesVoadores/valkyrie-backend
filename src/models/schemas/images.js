@@ -24,6 +24,10 @@ export default {
     type: String,
     required: true,
   },
+  filteredImageLink: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: String,
     required: true,

@@ -32,8 +32,11 @@ export const main = async (event) => {
       country,
     });
 
+    console.log('project', { project });
+
     return apiResponse({ message: 'New project created!', project }, 200);
   } catch (error) {
+    console.error('Error', { error });
     return apiError(error);
   }
 };

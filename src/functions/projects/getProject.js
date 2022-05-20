@@ -38,6 +38,8 @@ export const main = async (event) => {
         .exec()
     ).toJSON();
 
+    console.log('project', { project });
+
     return apiResponse({
       message: 'Project successfully fetch!',
       project: {
@@ -46,6 +48,7 @@ export const main = async (event) => {
       },
     }, 200);
   } catch (error) {
+    console.error('Error', { error });
     return apiError(error);
   }
 };

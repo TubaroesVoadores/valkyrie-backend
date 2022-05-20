@@ -8,18 +8,14 @@ custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkyrie-backend
 
-aliases:
-  - Models: src/models
-  - Utils: src/utils
-
 provider:
   name: aws
   runtime: nodejs14.x
-  region: us-east-1
   versionFunctions: false
   environment:
     stage: ${self:custom.stage}
     serviceName: ${self:custom.serviceName}
+    region: us-east-1
     imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
     projectsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-projects
     imagesBucketName: ${self:service}-${self:custom.stage}-images-bucket
