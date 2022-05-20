@@ -8,10 +8,6 @@ custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkyrie-backend
 
-aliases:
-  - Models: src/models
-  - Utils: src/utils
-
 provider:
   name: aws
   runtime: nodejs14.x
