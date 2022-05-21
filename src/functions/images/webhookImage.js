@@ -1,4 +1,5 @@
 import { formatISO } from 'date-fns';
+import AWS from 'aws-sdk';
 import {
   apiError,
   apiResponse,
@@ -13,6 +14,8 @@ import { Images } from '../../models';
  */
 
 export const main = async (event) => {
+  const lambda = new AWS.Lambda();
+
   try {
     const {
       imageId,
@@ -28,6 +31,14 @@ export const main = async (event) => {
       filteredImageLink: s3link,
       updatedAt: formatISO(new Date()),
     });
+
+    await lambda.invoke({
+      FunctionName: process.env.UnifiedStatusLambdaName,
+      InvocationType: 'Event',
+      Payload: JSON.stringify({
+        projectId: imageFiltered.projectId,
+      }),
+    }).promise();
 
     return apiResponse({ message: 'image updated!', imageFiltered }, 200);
   } catch (error) {

@@ -32,7 +32,13 @@ WebhookImage:
     - Effect: Allow
       Action: 
         - s3:*
-      Resource: '*'  
+      Resource: '*' 
+    - Effect: Allow
+      Action: 
+        - lambda:*
+      Resource: '*'
+  environment:
+    UnifiedStatusLambdaName: !Ref UnifiedStatusLambdaFunction
 
 GetImage:
   handler: src/functions/images/getImage.main
