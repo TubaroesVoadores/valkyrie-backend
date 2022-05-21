@@ -11,8 +11,6 @@ custom:
   email: valkyrie.cesupa@gmail.com
   cognitoUserPoolId: us-east-1_viDR20etW
 
-useDotenv: true
-
 provider:
   name: aws
   runtime: nodejs14.x
