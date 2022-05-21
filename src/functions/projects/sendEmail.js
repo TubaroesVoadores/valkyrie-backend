@@ -125,6 +125,7 @@ export const landingEmail = async (event) => {
 
     const finalHeaders = {
       'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
       'Access-Control-Allow-Headers': 'X-Amz-Security-Token',
     };
 

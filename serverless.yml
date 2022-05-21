@@ -1,7 +1,6 @@
 service: ${self:custom.serviceName}
 
 plugins:
-  - serverless-dotenv-plugin
   - serverless-iam-roles-per-function
   - serverless-bundle
 
