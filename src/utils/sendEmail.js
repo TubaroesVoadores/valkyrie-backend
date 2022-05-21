@@ -16,7 +16,7 @@ export const sendEmail = async (subjectKey, htmls) => {
         ? 'Solicitação de criação de novo projeto'
         : 'Solicitação de contato com o Valkyrie',
     from: `Valkyrie<${process.env.email}>`,
-    to: process.env.email,
+    to: 'valkyrie.cesupa@gmail.com',
     html: htmls,
   });
 
