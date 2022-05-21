@@ -1,35 +1,12 @@
 // import axios from 'axios';
-import { S3 } from 'aws-sdk';
 import {
   apiError,
   apiResponse,
   getEventParams,
-/*   InvalidInputError, */
-/*   NotFoundError, */
+  NotFoundError,
+  createImagesBucket,
 } from '../../utils';
-import { /* Images, */ /* Projects */ } from '../../models';
-
-const s3 = new S3();
-
-const createImages = async (image) => {
-  const data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
-
-  const Key = `${new Date().toISOString()}.jpeg`;
-
-  const params = {
-    Bucket: process.env.imagesBucketName,
-    Key,
-    Body: data,
-    ContentType: 'image/jpg',
-    ACL: 'public-read',
-  };
-
-  const url = `https://${process.env.imagesBucketName}.s3-${process.env.region}.amazonaws.com/${Key}`;
-
-  await s3.upload(params).promise();
-
-  return url;
-};
+import { Images, Projects } from '../../models';
 
 /**
  * @name CreateImages
@@ -43,10 +20,11 @@ const createImages = async (image) => {
 export const main = async (event) => {
   try {
     const {
-      /* lat, log, */ /* projectId, */ image,
+      projectId,
+      images: files,
     } = getEventParams(event);
 
-    /*     const [project] = await Projects
+    const [project] = await Projects
       .query('id')
       .eq(projectId)
       .where('deletedAt')
@@ -54,19 +32,23 @@ export const main = async (event) => {
       .exists()
       .exec();
 
-    if (!project) throw new NotFoundError('Project not found!');
- */
-    const bucketUrl = await createImages(image);
+    if (project) throw new NotFoundError('Project not found!');
 
-    const imagesUrls = await Promise.all(image.map(async (x) => {
-      const bucketUrl1 = await createImages(x);
-      return bucketUrl1;
+    const images = await Promise.all(files.map(async ({ image }) => {
+      const { s3link, id } = await createImagesBucket({ image });
+
+      const img = await Images.create({
+        projectId,
+        id,
+        s3link,
+      });
+
+      return img;
     }));
 
-    console.log(imagesUrls);
     // await Promise.allSettled(callImageProcessor(images));
 
-    return apiResponse({ message: 'New images created!', bucketUrl }, 200);
+    return apiResponse({ message: 'New images created!', images, projectId }, 200);
   } catch (error) {
     return apiError(error);
   }

@@ -1,13 +1,13 @@
 {
   "body": {
-    "name": "Olá mundo",
+    "name": "Teste",
     "city": "Belem",
     "state": "PA",
     "country": "Brasil"
   },
   "requestContext": {
     "identity": {
-      "cognitoIdentityId": "USER-SUB-1234"
+      "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
     }
   }
 }
