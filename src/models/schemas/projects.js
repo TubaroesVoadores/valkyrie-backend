@@ -8,6 +8,9 @@ export default {
     default: uuidv4,
     hashKey: true,
   },
+  zone: {
+    type: Number,
+  },
   userId: {
     type: String,
     index: {
@@ -15,6 +18,9 @@ export default {
       rangeKey: 'id',
       global: true,
     },
+  },
+  nativeForestArea: {
+    type: Number,
   },
   name: {
     required: true,
@@ -40,7 +46,7 @@ export default {
   },
   status: {
     type: String,
-    enum: ['CRIADO', 'PROCESSANDO', 'FINALIZADO'],
+    enum: ['CRIADO', 'REPROVADO', 'APROVADO'],
     default: 'CRIADO',
   },
   country: {

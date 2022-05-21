@@ -90,3 +90,12 @@ LandingEmail:
         path: projects/landingEmail
         cors: true
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-landing-email
+
+UnifiedStatus:
+  handler: src/functions/projects/unifiedStatus.main
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-unifiedStatus
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: '*'
