@@ -8,6 +8,8 @@ plugins:
 custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkyrie-backend
+  email: valkyrie.cesupa@gmail.com
+  cognitoUserPoolId: us-east-1_viDR20etW
 
 useDotenv: true
 
@@ -22,8 +24,8 @@ provider:
     imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
     projectsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-projects
     imagesBucketName: ${self:service}-${self:custom.stage}-images-bucket
-    email: valkyrie.cesupa@gmail.com
-    cognitoUserPoolId: us-east-1_viDR20etW
+    email: ${self:custom.email}
+    cognitoUserPoolId: ${self:custom.cognitoUserPoolId}
 
 package:
   exclude:
