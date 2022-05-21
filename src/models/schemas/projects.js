@@ -22,6 +22,9 @@ export default {
   nativeForestArea: {
     type: Number,
   },
+  nativeForestAreaPorcent: {
+    type: Number,
+  },
   name: {
     required: true,
     type: String,
