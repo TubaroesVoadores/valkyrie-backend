@@ -24,7 +24,7 @@ export const emailForms = async (event) => {
                   width: fit-content;
               ">
               <div style="
-                  background-color: #FFBF00;
+                  background-color: #15B54A;
                   color: white;
                   padding: 15px;
                   ">
@@ -102,7 +102,7 @@ export const landingEmail = async (event) => {
                                     width: fit-content;
                                 ">
                                 <div style="
-                                    background-color: #FFBF00;
+                                    background-color: #15B54A;
                                     color: white;
                                     padding: 15px;
                                     ">
