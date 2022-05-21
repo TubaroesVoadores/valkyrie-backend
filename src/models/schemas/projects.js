@@ -8,7 +8,7 @@ export default {
     default: uuidv4,
     hashKey: true,
   },
-  zone: {
+  area: {
     type: Number,
   },
   userId: {
