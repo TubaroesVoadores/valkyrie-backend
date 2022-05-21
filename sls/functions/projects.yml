@@ -73,10 +73,19 @@ ListProjects:
       Resource: !GetAtt [projectsTableDynamo, Arn]
 
 EmailForms:
-  handler: src/functions/projects/emailForms.main
+  handler: src/functions/projects/sendEmail.emailForms
   events:
     - http:
         method: post
         path: projects/emailForms
         cors: true
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-email-forms
+
+LandingEmail:
+  handler: src/functions/projects/sendEmail.landingEmail
+  events:
+    - http:
+        method: post
+        path: projects/landingEmail
+        cors: true
+  iamRoleStatementsName: ${self:service}-${self:custom.stage}-landing-email

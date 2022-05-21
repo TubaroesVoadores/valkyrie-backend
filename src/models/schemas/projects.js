@@ -20,6 +20,10 @@ export default {
     required: true,
     type: String,
   },
+  email: {
+    required: true,
+    type: String,
+  },
   nameProject: {
     required: true,
     type: String,
