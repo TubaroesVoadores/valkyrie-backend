@@ -3,22 +3,22 @@ import {
 import { Projects, Images } from '../../models';
 
 const nativeForestCalculator = (images) => {
-  let nativeForestZone = 0;
+  let nativeForestArea = 0;
   console.log(images);
 
   images.forEach(({ data }) => {
-    console.log(data.nativeForest * data.zone, nativeForestZone);
+    console.log(data.nativeForest * data.area, nativeForestArea);
 
-    nativeForestZone += data.nativeForest * data.zone;
+    nativeForestArea += data.nativeForest * data.area;
   });
 
-  console.log(nativeForestZone);
+  console.log(nativeForestArea);
 
-  return nativeForestZone;
+  return nativeForestArea;
 };
 
-const defineProjectStatus = (nativeForestZone, projectZone) => {
-  const nativeForestZonePorcent = nativeForestZone / projectZone;
+const defineProjectStatus = (nativeForestArea, projectZone) => {
+  const nativeForestZonePorcent = nativeForestArea / projectZone;
 
   if (nativeForestZonePorcent >= 0.25) {
     console.log('Project is approved');
@@ -67,15 +67,15 @@ export const main = async (event) => {
       return 'There are unfinished images';
     }
 
-    const nativeForestZone = nativeForestCalculator(images);
-    const status = defineProjectStatus(nativeForestZone, project.zone);
+    const nativeForestArea = nativeForestCalculator(images);
+    const status = defineProjectStatus(nativeForestArea, project.area);
 
-    console.log('Project\'s infos to update', { nativeForestZone, status });
+    console.log('Project\'s infos to update', { nativeForestArea, status });
 
     await Projects.update({
       status,
       id: projectId,
-      nativeForestZone,
+      nativeForestArea,
     });
 
     return `finished unified status ${status}`;

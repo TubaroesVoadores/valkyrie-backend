@@ -19,7 +19,7 @@ export default {
       global: true,
     },
   },
-  nativeForestZone: {
+  nativeForestArea: {
     type: Number,
   },
   name: {
