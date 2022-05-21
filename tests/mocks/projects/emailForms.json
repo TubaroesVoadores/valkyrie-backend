@@ -1,0 +1,11 @@
+{
+  "body": {
+    "nameProject": "Nome teste",
+    "description": "Teste teste teste"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
+    }
+  }
+}

@@ -1,12 +1,15 @@
 service: ${self:custom.serviceName}
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-iam-roles-per-function
   - serverless-bundle
 
 custom:
   stage: ${opt:stage, 'dev'}
   serviceName: valkyrie-backend
+
+useDotenv: true
 
 provider:
   name: aws
@@ -34,7 +37,7 @@ resources:
   # dynamo
   - ${file(sls/resources/dynamodb/imagesTable.yml)}
   - ${file(sls/resources/dynamodb/projectsTable.yml)}
-  
+
   # Cognito
   - ${file(sls/resources/cognitoUser/cognito-user-pool.yml)}
   - ${file(sls/resources/cognitoIdentity/cognito-identity-pool.yml)}

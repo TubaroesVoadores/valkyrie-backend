@@ -7,7 +7,7 @@
     "test:verbose": "jest",
     "test:coverage": "npm test -- --coverage",
     "deploy": "sls deploy --verbose -s ",
-    "script": "node scripts/sendEmail.js"
+    "script": "node scripts/createUser.js"
   },
   "babel": {
     "env": {
@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.25.4",
     "jest": "^26.6.3",
     "serverless-bundle": "^4.2.2",
+    "serverless-dotenv-plugin": "^4.0.1",
     "webpack": "^4.46.0"
   },
   "dependencies": {
