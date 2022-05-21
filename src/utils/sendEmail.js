@@ -15,8 +15,8 @@ export const sendEmail = async (subjectKey, htmls) => {
       subjectKey === 'emailForms'
         ? 'Solicitação de criação de novo projeto'
         : 'Solicitação de contato com o Valkyrie',
-    from: `Valkyrie<${process.env.EMAIL}>`,
-    to: process.env.EMAIL,
+    from: `Valkyrie<${process.env.email}>`,
+    to: process.env.email,
     html: htmls,
   });
 
