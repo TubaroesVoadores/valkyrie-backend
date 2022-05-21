@@ -123,9 +123,15 @@ export const landingEmail = async (event) => {
 
     const mailSent = sendEmail('landingEmail', htmlLanding);
 
+    const finalHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'X-Amz-Security-Token',
+    };
+
     const response = {
       statusCode: 200,
       body: JSON.stringify(mailSent),
+      headers: finalHeaders,
     };
 
     return response;
