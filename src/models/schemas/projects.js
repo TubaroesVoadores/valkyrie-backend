@@ -22,7 +22,7 @@ export default {
   nativeForestArea: {
     type: Number,
   },
-  nativeForestAreaPorcent: {
+  nativeForestAreaPercent: {
     type: Number,
   },
   name: {

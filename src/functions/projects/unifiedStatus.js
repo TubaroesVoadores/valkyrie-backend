@@ -18,9 +18,9 @@ const nativeForestCalculator = (images) => {
 };
 
 const defineProjectStatus = (nativeForestArea, projectZone) => {
-  const nativeForestAreaPorcent = nativeForestArea / projectZone;
+  const nativeForestAreaPercent = nativeForestArea / projectZone;
 
-  if (nativeForestAreaPorcent >= 0.25) {
+  if (nativeForestAreaPercent >= 0.25) {
     console.log('Project is approved');
     return 'APROVADO';
   }
@@ -76,7 +76,7 @@ export const main = async (event) => {
       status,
       id: projectId,
       nativeForestArea,
-      nativeForestAreaPorcent: nativeForestArea / project.area,
+      nativeForestAreaPercent: nativeForestArea / project.area,
     });
 
     return `finished unified status ${status}`;
