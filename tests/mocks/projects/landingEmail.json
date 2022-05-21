@@ -3,10 +3,5 @@
     "name": "Nome teste",
     "email": "test@gmail.com",
     "description": "Teste teste teste"
-  },
-  "requestContext": {
-    "identity": {
-      "cognitoIdentityId": "USER-SUB-1234"
-    }
   }
 }

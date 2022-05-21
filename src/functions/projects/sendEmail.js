@@ -123,7 +123,12 @@ export const landingEmail = async (event) => {
 
     const mailSent = sendEmail('landingEmail', htmlLanding);
 
-    return apiResponse({ message: 'Email sent successfully!', mailSent }, 200);
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(mailSent),
+    };
+
+    return response;
   } catch (error) {
     return apiError(error);
   }
