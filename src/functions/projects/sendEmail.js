@@ -93,6 +93,48 @@ export const landingEmail = async (event) => {
   try {
     const { name, email, description } = getEventParams(event);
 
+    const htmlLanding = `
+                        <html>
+                        <body style="color: black; background-color: #f6f9f6">
+                            <center style="background-color: #f6f9f6; padding: 30px 0">
+                            <div style="
+                                    background-color: white;
+                                    width: fit-content;
+                                ">
+                                <div style="
+                                    background-color: #FFBF00;
+                                    color: white;
+                                    padding: 15px;
+                                    ">
+                                <span style="font-size: 30px; font-weight: bold">
+                                    Valkyrie
+                                </span>
+                                </div>
+                                <div style="padding: 10px 30px 30px 30px">
+                                <p style="font-size: 18px">
+                                    Nome: <strong>${name}</strong>
+                                </p>
+                                <p style="font-size: 18px">
+                                    Email: <strong>${email}</strong>
+                                </p>
+                                <p style="font-size: 18px">
+                                    Descrição: <strong>${description}</strong>
+                                </p>
+                                <br />
+                                <br />
+                                <span style="font-size: 16px;">
+                                    Essa mensagem foi enviada a você pelo serviço
+                                    <strong>Valkyrie.</strong>
+                                </span>
+                                <br />
+                                <span style="font-size: 14px;">Por favor não responda a este e-mail.</span>
+                                </div>
+                            </div>
+                            </center>
+                        </body>
+                        </html>
+                        `;
+
     const transport = nodemailer.createTransport({
       host: 'smtp.mailtrap.io',
       port: 2525,
@@ -106,47 +148,7 @@ export const landingEmail = async (event) => {
       subject: 'Solicitação de contato com o Valkyrie',
       from: `Valkyrie<${process.env.email}>`,
       to: `${process.env.email}`,
-      html: `
-              <html>
-              <body style="color: black; background-color: #f6f9f6">
-                  <center style="background-color: #f6f9f6; padding: 30px 0">
-                  <div style="
-                          background-color: white;
-                          width: fit-content;
-                      ">
-                      <div style="
-                          background-color: #FFBF00;
-                          color: white;
-                          padding: 15px;
-                          ">
-                      <span style="font-size: 30px; font-weight: bold">
-                          Valkyrie
-                      </span>
-                      </div>
-                      <div style="padding: 10px 30px 30px 30px">
-                      <p style="font-size: 18px">
-                          Nome: <strong>${name}</strong>
-                      </p>
-                      <p style="font-size: 18px">
-                          Email: <strong>${email}</strong>
-                      </p>
-                      <p style="font-size: 18px">
-                          Descrição: <strong>${description}</strong>
-                      </p>
-                      <br />
-                      <br />
-                      <span style="font-size: 16px;">
-                          Essa mensagem foi enviada a você pelo serviço
-                          <strong>Valkyrie.</strong>
-                      </span>
-                      <br />
-                      <span style="font-size: 14px;">Por favor não responda a este e-mail.</span>
-                      </div>
-                  </div>
-                  </center>
-              </body>
-              </html>
-              `,
+      html: htmlLanding,
     });
 
     return apiResponse({ message: 'Email sent successfully!', mailSent }, 200);
