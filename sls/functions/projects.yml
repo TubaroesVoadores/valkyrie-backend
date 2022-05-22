@@ -90,7 +90,6 @@ LandingEmail:
         method: post
         path: projects/landingEmail
         cors: true
-        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-landing-email
 
 UnifiedStatus:
