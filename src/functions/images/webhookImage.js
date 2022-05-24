@@ -29,8 +29,7 @@ export const main = async (event) => {
 
     const { s3link } = await createImagesBucket({ image, isFiltered: true });
 
-    const imageSplit = imagePath.split('.');
-    const imageId = imageSplit[0];
+    const imageId = imagePath.split('.')[0];
 
     const imageFiltered = await Images.update({
       id: imageId,
