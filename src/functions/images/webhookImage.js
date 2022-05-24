@@ -17,16 +17,15 @@ export const main = async (event) => {
   const lambda = new AWS.Lambda();
   try {
     const {
-      imageData: {
-        id: imagePath,
-        nativeForest,
-        lat,
-        log,
-        area,
-      },
-      file: image,
+      id: imagePath,
+      nativeForest,
+      lat,
+      log,
+      area,
+      file,
     } = getEventParams(event);
 
+    const image = file.replace(/b'/, '');
     const { s3link } = await createImagesBucket({ image, isFiltered: true });
 
     const imageId = imagePath.split('.')[0];
