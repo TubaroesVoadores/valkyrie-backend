@@ -11,7 +11,7 @@ const registerUser = () => {
     new AWS.CognitoIdentityServiceProvider();
 
   const params = {
-    UserPoolId: process.env.cognitoUserPoolId,
+    UserPoolId: process.env.COGNITO_USER_POOL_ID,
     Username: process.argv[2],
     ForceAliasCreation: true,
     UserAttributes: [
