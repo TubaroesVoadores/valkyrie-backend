@@ -15,19 +15,31 @@ import { Images } from '../../models';
 
 export const main = async (event) => {
   const lambda = new AWS.Lambda();
-
   try {
     const {
-      imageId,
-      data,
+      imageData: {
+        id: imagePath,
+        nativeForest,
+        lat,
+        log,
+        area,
+      },
       file: image,
     } = getEventParams(event);
 
     const { s3link } = await createImagesBucket({ image, isFiltered: true });
 
+    const imageSplit = imagePath.split('.');
+    const imageId = imageSplit[0];
+
     const imageFiltered = await Images.update({
       id: imageId,
-      data,
+      data: {
+        nativeForest,
+        lat,
+        log,
+        area,
+      },
       filteredImageLink: s3link,
       updatedAt: formatISO(new Date()),
     });

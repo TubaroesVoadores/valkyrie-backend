@@ -8,6 +8,8 @@ export const getEventParams = (event) => {
   const cognitoIdentityId = requestContext?.identity?.cognitoIdentityId;
   const entry = typeof body === 'string' ? JSON.parse(body) : body;
 
+  console.log('Entry:', { entry });
+
   return {
     ...entry,
     ...pathParameters,
