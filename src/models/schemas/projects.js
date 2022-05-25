@@ -19,6 +19,9 @@ export default {
       global: true,
     },
   },
+  projectName: {
+    type: String,
+  },
   nativeForestArea: {
     type: Number,
   },

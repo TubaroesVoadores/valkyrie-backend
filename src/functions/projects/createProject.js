@@ -23,6 +23,8 @@ export const main = async (event) => {
       state,
       country,
       area,
+      description,
+      projectName,
     } = getEventParams(event);
 
     const project = await Projects.create({
@@ -32,6 +34,8 @@ export const main = async (event) => {
       state,
       country,
       area,
+      description,
+      projectName,
     });
 
     console.log('project', { project });
