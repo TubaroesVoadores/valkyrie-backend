@@ -54,19 +54,17 @@ export const main = async (event) => {
     if (images) images = await genereteImageLink(images);
 
     console.log('project', { project: project.id, images });
-    if (project) {
-      const lambda = new AWS.Lambda();
-      await lambda.invoke({
-        FunctionName: process.env.CreateImageLambdaName,
-        InvocationType: 'Event',
-        Payload: JSON.stringify({
-          body: {
-            projectId: project.id,
-            images,
-          },
-        }),
-      }).promise();
-    }
+    const lambda = new AWS.Lambda();
+    await lambda.invoke({
+      FunctionName: process.env.CreateImageLambdaName,
+      InvocationType: 'Event',
+      Payload: JSON.stringify({
+        body: {
+          projectId: project.id,
+          images,
+        },
+      }),
+    }).promise();
 
     return apiResponse({ message: 'New project created!', project }, 200);
   } catch (error) {

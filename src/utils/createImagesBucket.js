@@ -5,7 +5,7 @@ export const createImagesBucket = async ({ image, isFiltered = false }) => {
   const s3 = new S3();
   const id = isFiltered ? `${uuidv4()}-filtered` : uuidv4();
 
-  if (image.includes('http//')) {
+  if (image.includes('https://')) {
     return { s3link: image, id };
   }
 
