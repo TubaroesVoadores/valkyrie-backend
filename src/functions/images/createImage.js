@@ -43,7 +43,7 @@ export const main = async (event) => {
       images: files,
     } = getEventParams(event);
 
-    const [project] = await Projects
+    const project = await Projects
       .query('id')
       .eq(projectId)
       .where('deletedAt')
@@ -51,7 +51,7 @@ export const main = async (event) => {
       .exists()
       .exec();
 
-    if (project) throw new NotFoundError('Project not found!');
+    if (!project) throw new NotFoundError('Project not found!');
 
     const images = await Promise.all(files.map(async ({ image }) => {
       const { s3link, id } = await createImagesBucket({ image });
