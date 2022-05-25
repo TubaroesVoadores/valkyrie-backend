@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import {
   apiError,
   apiResponse,
@@ -7,6 +7,25 @@ import {
   createImagesBucket,
 } from '../../utils';
 import { Images, Projects } from '../../models';
+
+const callImageProcessor = async (images) => {
+  const response = await Promise.all(images.map(async ({ s3link, id }) => {
+    const { data } = await axios({
+      method: 'POST',
+      url: 'https://4n28lapsp1.execute-api.us-east-1.amazonaws.com/dev/imageprocessing',
+      data: {
+        body: {
+          imageId: id,
+          link: s3link,
+        },
+      },
+    });
+
+    console.log(data);
+  }));
+
+  return response;
+};
 
 /**
  * @name CreateImages
@@ -46,7 +65,7 @@ export const main = async (event) => {
       return img;
     }));
 
-    // await Promise.allSettled(callImageProcessor(images));
+    Promise.allSettled(await callImageProcessor(images));
 
     return apiResponse({ message: 'New images created!', images, projectId }, 200);
   } catch (error) {

@@ -26,7 +26,6 @@ export default {
   },
   filteredImageLink: {
     type: String,
-    required: true,
   },
   createdAt: {
     type: String,
