@@ -3,7 +3,6 @@ import AWS from 'aws-sdk';
 import {
   apiError,
   apiResponse,
-  createImagesBucket,
   getEventParams,
 } from '../../utils';
 import { Images } from '../../models';
@@ -22,11 +21,8 @@ export const main = async (event) => {
       lat,
       log,
       area,
-      file,
+      link,
     } = getEventParams(event);
-
-    const image = file.replace(/b'/, '');
-    const { s3link } = await createImagesBucket({ image, isFiltered: true });
 
     const imageId = imagePath.split('.')[0];
 
@@ -38,7 +34,7 @@ export const main = async (event) => {
         log,
         area,
       },
-      filteredImageLink: s3link,
+      filteredImageLink: link,
       updatedAt: formatISO(new Date()),
     });
 
