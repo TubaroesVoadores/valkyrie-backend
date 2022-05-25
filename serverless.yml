@@ -7,6 +7,8 @@ plugins:
 custom:
   stage: ${opt:stage, 'dev'}
   serviceName: backend-valkyrie
+  email: valkyrie.cesupa@gmail.com
+  cognitoUserPoolId: us-east-1_viDR20etW
 
 provider:
   name: aws

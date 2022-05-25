@@ -14,9 +14,8 @@ export const createImagesBucket = async ({ image, isFiltered = false }) => {
   try {
     const params = {
       Bucket: process.env.imagesBucketName,
-      Key: id,
+      Key: `${id}.jpg`,
       Body: data,
-      ContentType: 'image/jpg',
       ACL: 'public-read',
     };
 

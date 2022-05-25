@@ -3,7 +3,6 @@ import AWS from 'aws-sdk';
 import {
   apiError,
   apiResponse,
-  createImagesBucket,
   getEventParams,
 } from '../../utils';
 import { Images } from '../../models';
@@ -15,20 +14,27 @@ import { Images } from '../../models';
 
 export const main = async (event) => {
   const lambda = new AWS.Lambda();
-
   try {
     const {
-      imageId,
-      data,
-      file: image,
+      id: imagePath,
+      nativeForest,
+      lat,
+      log,
+      area,
+      link,
     } = getEventParams(event);
 
-    const { s3link } = await createImagesBucket({ image, isFiltered: true });
+    const imageId = imagePath.split('.')[0];
 
     const imageFiltered = await Images.update({
       id: imageId,
-      data,
-      filteredImageLink: s3link,
+      data: {
+        nativeForest,
+        lat,
+        log,
+        area,
+      },
+      filteredImageLink: link,
       updatedAt: formatISO(new Date()),
     });
 
