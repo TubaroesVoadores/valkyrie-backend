@@ -8,11 +8,15 @@ import {
 import { Projects } from '../../models';
 
 const genereteImageLink = async (images) => {
-  Promise.all(
-    images.map((image) => {
-      createImagesBucket(image)
-    }
+  const links = await Promise.all(
+    images.map(async ({ image }) => {
+      const { s3link } = await createImagesBucket({ image });
+
+      return { image: s3link };
+    }),
   );
+
+  return links;
 };
 
 /**
@@ -25,8 +29,6 @@ const genereteImageLink = async (images) => {
  */
 
 export const main = async (event) => {
-  const lambda = new AWS.Lambda();
-
   try {
     let {
       name,
@@ -49,20 +51,22 @@ export const main = async (event) => {
       email,
     });
 
-    if (images) images = genereteImageLink(images);
+    if (images) images = await genereteImageLink(images);
 
-    await lambda.invoke({
-      FunctionName: process.env.CreateImageLambdaName,
-      InvocationType: 'Event',
-      Payload: JSON.stringify({
-        body: {
-          projectId: project.id,
-          images,
-        },
-      }),
-    }).promise();
-
-    console.log('project', { project });
+    console.log('project', { project: project.id, images });
+    if (project) {
+      const lambda = new AWS.Lambda();
+      await lambda.invoke({
+        FunctionName: process.env.CreateImageLambdaName,
+        InvocationType: 'Event',
+        Payload: JSON.stringify({
+          body: {
+            projectId: project.id,
+            images,
+          },
+        }),
+      }).promise();
+    }
 
     return apiResponse({ message: 'New project created!', project }, 200);
   } catch (error) {

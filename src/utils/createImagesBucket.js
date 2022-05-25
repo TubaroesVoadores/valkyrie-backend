@@ -6,7 +6,7 @@ export const createImagesBucket = async ({ image, isFiltered = false }) => {
   const id = isFiltered ? `${uuidv4()}-filtered` : uuidv4();
 
   if (image.includes('http//')) {
-    return { s3Link: image, id };
+    return { s3link: image, id };
   }
 
   const data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
