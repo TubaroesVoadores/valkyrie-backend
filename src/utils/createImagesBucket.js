@@ -3,9 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const createImagesBucket = async ({ image, isFiltered = false }) => {
   const s3 = new S3();
-  const data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
-
   const id = isFiltered ? `${uuidv4()}-filtered` : uuidv4();
+
+  if (image.includes('http//')) {
+    return { s3Link: image, id };
+  }
+
+  const data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
   try {
     const params = {

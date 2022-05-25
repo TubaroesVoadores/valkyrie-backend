@@ -1,9 +1,19 @@
+import AWS from 'aws-sdk';
 import {
   apiError,
   apiResponse,
   getEventParams,
+  createImagesBucket,
 } from '../../utils';
 import { Projects } from '../../models';
+
+const genereteImageLink = async (images) => {
+  Promise.all(
+    images.map((image) => {
+      createImagesBucket(image)
+    }
+  );
+};
 
 /**
  * @name CreateProject
@@ -15,16 +25,18 @@ import { Projects } from '../../models';
  */
 
 export const main = async (event) => {
+  const lambda = new AWS.Lambda();
+
   try {
-    const {
+    let {
       name,
       userId,
       city,
       state,
       country,
       area,
-      description,
-      projectName,
+      email,
+      images,
     } = getEventParams(event);
 
     const project = await Projects.create({
@@ -34,9 +46,21 @@ export const main = async (event) => {
       state,
       country,
       area,
-      description,
-      projectName,
+      email,
     });
+
+    if (images) images = genereteImageLink(images);
+
+    await lambda.invoke({
+      FunctionName: process.env.CreateImageLambdaName,
+      InvocationType: 'Event',
+      Payload: JSON.stringify({
+        body: {
+          projectId: project.id,
+          images,
+        },
+      }),
+    }).promise();
 
     console.log('project', { project });
 

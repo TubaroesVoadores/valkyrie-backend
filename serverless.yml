@@ -6,7 +6,7 @@ plugins:
 
 custom:
   stage: ${opt:stage, 'dev'}
-  serviceName: valkyrie-backend
+  serviceName: backend-valkyrie
 
 provider:
   name: aws
