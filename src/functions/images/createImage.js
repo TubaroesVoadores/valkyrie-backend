@@ -10,6 +10,13 @@ import { Images, Projects } from '../../models';
 
 const callImageProcessor = async (images) => {
   const response = await Promise.all(images.map(async ({ s3link, id }) => {
+    console.log({
+      body: {
+        imageId: id,
+        link: s3link,
+      },
+    });
+
     const { data } = await axios({
       method: 'POST',
       url: 'https://4n28lapsp1.execute-api.us-east-1.amazonaws.com/dev/imageprocessing',
@@ -43,7 +50,7 @@ export const main = async (event) => {
       images: files,
     } = getEventParams(event);
 
-    const [project] = await Projects
+    const project = await Projects
       .query('id')
       .eq(projectId)
       .where('deletedAt')
@@ -51,7 +58,7 @@ export const main = async (event) => {
       .exists()
       .exec();
 
-    if (project) throw new NotFoundError('Project not found!');
+    if (!project) throw new NotFoundError('Project not found!');
 
     const images = await Promise.all(files.map(async ({ image }) => {
       const { s3link, id } = await createImagesBucket({ image });
