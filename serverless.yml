@@ -21,8 +21,7 @@ provider:
     imagesTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-images
     projectsTableDynamoName: ${self:custom.serviceName}-${self:custom.stage}-projects
     imagesBucketName: ${self:service}-${self:custom.stage}-images-bucket
-    email: ${self:custom.email}
-    cognitoUserPoolId: ${self:custom.cognitoUserPoolId}
+    email: valkyrie.cesupa@gmail.com
 
 package:
   exclude:

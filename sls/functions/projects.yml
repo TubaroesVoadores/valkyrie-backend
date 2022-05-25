@@ -80,6 +80,7 @@ EmailForms:
         method: post
         path: projects/emailForms
         cors: true
+        authorizer: aws_iam
   iamRoleStatementsName: ${self:service}-${self:custom.stage}-email-forms
 
 LandingEmail:
