@@ -13,6 +13,6 @@ export const getEventParams = (event) => {
   return {
     ...entry,
     ...pathParameters,
-    userId: entry.userId || cognitoIdentityId,
+    userId: entry?.userId || cognitoIdentityId,
   };
 };
