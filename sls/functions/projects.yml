@@ -15,10 +15,11 @@ CreateProject:
     - Effect: Allow
       Action: 
         - lambda:*
+      Resource: '*'
     - Effect: Allow
       Action: 
         - s3:*
-      Resource: '*'  
+      Resource: '*'
   environment:
     CreateImageLambdaName: !Ref CreateImagesLambdaFunction
 
