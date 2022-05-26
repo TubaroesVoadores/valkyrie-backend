@@ -2,6 +2,14 @@ const AWS = require('aws-sdk');
 
 require('dotenv').config();
 
+/**
+ * To run use:
+ *
+ *
+ * node scripts/createUser.js email userName
+ *
+ */
+
 const registerUser = () => {
   AWS.config.update({
     region: 'us-east-1',

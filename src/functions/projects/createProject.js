@@ -7,7 +7,7 @@ import {
 } from '../../utils';
 import { Projects } from '../../models';
 
-const genereteImageLink = async (images) => {
+const generateImageLink = async (images) => {
   const links = await Promise.all(
     images.map(async ({ image }) => {
       const { s3link } = await createImagesBucket({ image });
@@ -17,6 +17,23 @@ const genereteImageLink = async (images) => {
   );
 
   return links;
+};
+
+const callCreateImages = async (projectId, images) => {
+  const lambda = new AWS.Lambda();
+
+  console.log('project', { projectId, images });
+
+  await lambda.invoke({
+    FunctionName: process.env.CreateImageLambdaName,
+    InvocationType: 'Event',
+    Payload: JSON.stringify({
+      body: {
+        projectId,
+        images,
+      },
+    }),
+  }).promise();
 };
 
 /**
@@ -51,20 +68,12 @@ export const main = async (event) => {
       email,
     });
 
-    if (images) images = await genereteImageLink(images);
+    if (images) {
+      images = await generateImageLink(images);
+      await callCreateImages(project.id, images);
 
-    console.log('project', { project: project.id, images });
-    const lambda = new AWS.Lambda();
-    await lambda.invoke({
-      FunctionName: process.env.CreateImageLambdaName,
-      InvocationType: 'Event',
-      Payload: JSON.stringify({
-        body: {
-          projectId: project.id,
-          images,
-        },
-      }),
-    }).promise();
+      project.images = images;
+    }
 
     return apiResponse({ message: 'New project created!', project }, 200);
   } catch (error) {
