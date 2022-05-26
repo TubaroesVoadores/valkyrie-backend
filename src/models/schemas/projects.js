@@ -19,6 +19,9 @@ export default {
       global: true,
     },
   },
+  projectName: {
+    type: String,
+  },
   nativeForestArea: {
     type: Number,
   },
@@ -33,12 +36,7 @@ export default {
     required: true,
     type: String,
   },
-  nameProject: {
-    required: true,
-    type: String,
-  },
   description: {
-    required: true,
     type: String,
   },
   city: {

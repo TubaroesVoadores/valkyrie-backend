@@ -12,6 +12,16 @@ CreateProject:
       Action:
         - dynamodb:*
       Resource: '*'
+    - Effect: Allow
+      Action: 
+        - lambda:*
+    - Effect: Allow
+      Action: 
+        - s3:*
+      Resource: '*'  
+  environment:
+    CreateImageLambdaName: !Ref CreateImagesLambdaFunction
+
 
 DeleteProject:
   handler: src/functions/projects/deleteProject.main
