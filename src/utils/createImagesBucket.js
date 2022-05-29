@@ -1,8 +1,8 @@
-import { S3 } from 'aws-sdk';
+import AWS from 'aws-sdk';
 import { v4 as uuidv4 } from 'uuid';
 
 export const createImagesBucket = async ({ image, isFiltered = false }) => {
-  const s3 = new S3();
+  const s3 = new AWS.S3();
   const id = isFiltered ? `${uuidv4()}-filtered` : uuidv4();
 
   if (image.includes('https://')) {
