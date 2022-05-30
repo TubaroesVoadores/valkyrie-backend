@@ -5,7 +5,7 @@ export const apiError = (error) => {
 
   let statusCode;
   const body = {};
-
+  console.log('werfqwe', { pedro: error.name });
   switch (error.name) {
     case 'InvalidInputError':
       statusCode = 400;
@@ -19,16 +19,16 @@ export const apiError = (error) => {
       statusCode = 401;
       body.message = error.message;
       break;
-    case 'ForbiddenError':
-      statusCode = 403;
+    case 'TypeMismatch':
+      statusCode = 404;
       body.message = error.message;
       break;
     case 'NotFoundError':
       statusCode = 404;
       body.message = error.message;
       break;
-    case 'TimeoutError':
-      statusCode = 504;
+    case 'ValidationError':
+      statusCode = 404;
       body.message = error.message;
       break;
     default:
