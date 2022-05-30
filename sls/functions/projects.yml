@@ -22,37 +22,6 @@ CreateProject:
   environment:
     CreateImageLambdaName: !Ref CreateImagesLambdaFunction
 
-
-DeleteProject:
-  handler: src/functions/projects/deleteProject.main
-  events:
-    - http:
-        method: delete
-        path: projects/{projectId}
-        cors: true
-        authorizer: aws_iam
-  iamRoleStatementsName: ${self:service}-${self:custom.stage}-delete-project
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:*
-      Resource: '*'
-
-UpdateProject:
-  handler: src/functions/projects/updateProject.main
-  events:
-    - http:
-        method: put
-        path: projects/{projectId}
-        cors: true
-        authorizer: aws_iam
-  iamRoleStatementsName: ${self:service}-${self:custom.stage}-update-project
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:*
-      Resource: '*'
-
 GetProject:
   handler: src/functions/projects/getProject.main
   events:
