@@ -6,7 +6,7 @@
     "country": "Brasil",
     "email": "pedroaluz137@gmail.com",
     "userId": "us-east-1:c9e928a8-bbe2-4e20-b922-232680b5e6f2",
-    "area": 9,
+    "area": "9",
     "images": [
       {
         "iamges": "https://bucket.s3.amazonaws.com/event.jpg"

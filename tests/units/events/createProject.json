@@ -19,5 +19,42 @@
         "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
       }
     }
+  },
+  "successEventWithImages": {
+    "body": {
+      "name": "Computação amostra",
+      "city": "Belem",
+      "state": "PA",
+      "country": "Brasil",
+      "email": "pedroaluz137@gmail.com",
+      "userId": "us-east-1:c9e928a8-bbe2-4e20-b922-232680b5e6f2",
+      "area": 9
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
+      }
+    }
+  },
+  "invalidInputEvent": {
+    "body": {
+      "name": "Computação amostra",
+      "city": "Belem",
+      "state": "PA",
+      "country": "Brasil",
+      "email": "pedroaluz137@gmail.com",
+      "userId": "us-east-1:c9e928a8-bbe2-4e20-b922-232680b5e6f2",
+      "area": "9",
+      "images": [
+        {
+          "image": "https://bucket.s3.amazonaws.com/event.jpg"
+        }
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
+      }
+    }
   }
 }

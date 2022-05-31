@@ -18,5 +18,22 @@
         }
       ]
     }
+  },
+  "invalidInputResponse": {
+    "message": "Wrong entry format, instance.area is not of a type(s) number"
+  },
+  "successResponseWithImages": {
+    "message": "New project created!",
+    "project": {
+      "name": "Computação amostra",
+      "userId": "us-east-1:c9e928a8-bbe2-4e20-b922-232680b5e6f2",
+      "city": "Belem",
+      "state": "PA",
+      "country": "Brasil",
+      "area": 9,
+      "email": "pedroaluz137@gmail.com",
+      "id": "6dfd8b63-8c22-4da8-9eab-d57c31b660ad",
+      "createdAt": "2021-03-23T17:11:48.543-03:00"
+    }
   }
 }
