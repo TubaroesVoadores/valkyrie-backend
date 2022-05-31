@@ -15,20 +15,20 @@ export const apiError = (error) => {
       statusCode = error?.status;
       body.message = error.message;
       break;
-    case 'UnauthorizedError':
-      statusCode = 401;
-      body.message = error.message;
-      break;
     case 'ForbiddenError':
       statusCode = 403;
+      body.message = error.message;
+      break;
+    case 'TypeMismatch':
+      statusCode = 404;
       body.message = error.message;
       break;
     case 'NotFoundError':
       statusCode = 404;
       body.message = error.message;
       break;
-    case 'TimeoutError':
-      statusCode = 504;
+    case 'ValidationError':
+      statusCode = 404;
       body.message = error.message;
       break;
     default:

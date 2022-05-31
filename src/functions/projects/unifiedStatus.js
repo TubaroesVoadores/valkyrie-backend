@@ -30,7 +30,8 @@ const defineProjectStatus = (nativeForestArea, projectZone) => {
 
 /**
  * @name UnifiedStatus
- * @description This lambda is responsible for creating a unfied status for a project.
+ * @description This lambda is responsible determine the final status of a project
+ * considering information from image processing.
  * @param {Object} event - Base event object of AWS Lambda.
  * @param {Object} event.projectId - Project's id.
  * @command sls invoke local -f UnifiedStatus -p tests/mocks/Projects/unifiedStatus.json -s STAGE
@@ -40,25 +41,21 @@ export const main = async (event) => {
   try {
     const { projectId } = typeof event === 'string' ? JSON.parse(event) : event;
 
-    const images = (
-      await Images
-        .query('projectId')
-        .eq(projectId)
-        .where('deletedAt')
-        .not()
-        .exists()
-        .exec()
-    ).toJSON();
+    const images = await Images
+      .query('projectId')
+      .eq(projectId)
+      .where('deletedAt')
+      .not()
+      .exists()
+      .exec();
 
-    const [project] = (
-      await Projects
-        .query('id')
-        .eq(projectId)
-        .where('deletedAt')
-        .not()
-        .exists()
-        .exec()
-    ).toJSON();
+    const [project] = await Projects
+      .query('id')
+      .eq(projectId)
+      .where('deletedAt')
+      .not()
+      .exists()
+      .exec();
 
     const imagesFinished = images.filter(({ filteredImageLink }) => (filteredImageLink));
 
@@ -82,6 +79,6 @@ export const main = async (event) => {
     return `finished unified status ${status}`;
   } catch (error) {
     console.error('Error', { error });
-    throw error;
+    return `An error ocurred in unifiedStatus ${error.message}`;
   }
 };

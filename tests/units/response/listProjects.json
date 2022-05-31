@@ -1,0 +1,22 @@
+{
+  "successResponse": {
+    "message": "Projects successfully fetch",
+    "projects": [
+      {
+        "area": 9,
+        "city": "Belem",
+        "country": "Brasil",
+        "createdAt": "2022-05-26T15:25:59Z",
+        "email": "pedroaluz137@gmail.com",
+        "id": "2c855ba6-5557-4314-afe0-125bf5f2654e",
+        "name": "CESUPA",
+        "nativeForestArea": 2.2093875,
+        "nativeForestAreaPercent": 0.2454875,
+        "state": "PA",
+        "status": "REPROVADO",
+        "updatedAt": "2022-05-26T15:25:59Z",
+        "userId": "us-east-1:5fe8b5e0-2400-4736-883c-2a1c593441cf"
+      }
+    ]
+  }
+}

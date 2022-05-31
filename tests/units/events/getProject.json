@@ -1,0 +1,32 @@
+{
+  "successEvent": {
+    "pathParameters": {
+      "projectId": "3ea14f4b-934d-4258-91c9-fc8deb81e99a"
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "us-east-1:58d4c81e-089f-4c46-9662-de70ce93af3b"
+      }
+    }
+  },
+  "forbiddenEvent": {
+    "pathParameters": {
+      "projectId": "3ea14f4b-934d-4258-91c9-fc8deb81e99a"
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "user invalido"
+      }
+    }
+  },
+  "notFoundEvent": {
+    "pathParameters": {
+      "projectId": "project invalido"
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "us-east-1:58d4c81e-089f-4c46-9662-de70ce93af3b"
+      }
+    }
+  }
+}
