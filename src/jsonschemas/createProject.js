@@ -1,4 +1,4 @@
-export default {
+export const createProjectSchema = {
   type: 'object',
   required: true,
   properties: {

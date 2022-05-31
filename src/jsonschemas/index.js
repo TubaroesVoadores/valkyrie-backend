@@ -1,1 +1,1 @@
-export * as createProjectSchema from './createProject';
+export * from './createProject';
