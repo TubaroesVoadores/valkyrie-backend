@@ -11,20 +11,36 @@
       "email": "pedroaluz137@gmail.com",
       "id": "3ea14f4b-934d-4258-91c9-fc8deb81e99a",
       "createdAt": "2022-05-27T19:05:54Z",
-      "images": {
-        "filteredImageLink": "https://bucket.s3.amazonaws.com/image_resized_filtered.jpg",
-        "id": "111e2711-d708-4cec-a3d7-8e6c14d6ac6b",
-        "projectId": "a8c4f47e-758a-49c0-9ad9-d438e3bad42e",
-        "s3link": "https://bucket.s3.amazonaws.com/image.jpg",
-        "updatedAt": "2022-05-26T00:51:56Z",
-        "createdAt": "2022-05-26T00:51:56Z",
-        "data": {
-          "area": 3,
-          "lat": 38.98769411111111,
-          "log": -107.88787850000001,
-          "nativeForest": 0.3686286458333333
+      "images": [
+        {
+          "createdAt": "2022-05-26T00:51:56Z",
+          "data": {
+            "area": 3,
+            "lat": 38.98769411111111,
+            "log": -107.88787850000001,
+            "nativeForest": 0.3686286458333333
+          },
+          "filteredImageLink": "https://bucket.s3.amazonaws.com/image_resized_filtered.jpg",
+          "id": "111e2711-d708-4cec-a3d7-8e6c14d6ac6b",
+          "projectId": "a8c4f47e-758a-49c0-9ad9-d438e3bad42e",
+          "s3link": "https://bucket.s3.amazonaws.com/image.jpg",
+          "updatedAt": "2022-05-26T00:51:56Z"
+        },
+        {
+          "createdAt": "2022-05-26T00:51:56Z",
+          "data": {
+            "area": 3,
+            "lat": 38.98769411111111,
+            "log": -107.88787850000001,
+            "nativeForest": 0.3686286458333333
+          },
+          "filteredImageLink": "https://bucket.s3.amazonaws.com/image_resized_filtered.jpg",
+          "id": "111e2711-d708-4cec-a3d7-8e6c14d6ac6b",
+          "projectId": "a8c4f47e-758a-49c0-9ad9-d438e3bad42e",
+          "s3link": "https://bucket.s3.amazonaws.com/image.jpg",
+          "updatedAt": "2022-05-26T00:51:56Z"
         }
-      }
+      ]
     }
   },
   "forbiddenResponse": {

@@ -30,7 +30,7 @@ export const main = async (event) => {
     if (!project) throw new NotFoundError('Project not found!');
     if (userId !== project.userId) throw new ForbiddenError('Trying to access another user\'s project!');
 
-    const [images] = await Images
+    const images = await Images
       .query('projectId')
       .eq(projectId)
       .where('deletedAt')
