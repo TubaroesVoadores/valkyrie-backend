@@ -26,17 +26,17 @@ export const main = async (event) => {
       .exists()
       .exec();
 
+    console.log(project);
+
     if (!project) throw new NotFoundError('Project not found!');
 
-    const images = (
-      await Images
-        .query('projectId')
-        .eq(projectId)
-        .where('deletedAt')
-        .not()
-        .exists()
-        .exec()
-    ).toJSON();
+    const [images] = await Images
+      .query('projectId')
+      .eq(projectId)
+      .where('deletedAt')
+      .not()
+      .exists()
+      .exec();
 
     console.log('project', { project });
 
