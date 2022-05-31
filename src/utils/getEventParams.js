@@ -7,8 +7,6 @@ const validateBody = (body, schema) => {
   const v = new Validator();
   const validation = v.validate(body, schema);
 
-  console.log('werqwerqw', validation.errors);
-
   if (validation.errors.length > 0) {
     const errors = validation.errors.map((error) => `${error.stack}`).join(',');
     throw new InvalidInputError(`Wrong entry format, ${errors}`, errors);
