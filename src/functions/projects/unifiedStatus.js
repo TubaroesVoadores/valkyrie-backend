@@ -41,25 +41,21 @@ export const main = async (event) => {
   try {
     const { projectId } = typeof event === 'string' ? JSON.parse(event) : event;
 
-    const images = (
-      await Images
-        .query('projectId')
-        .eq(projectId)
-        .where('deletedAt')
-        .not()
-        .exists()
-        .exec()
-    ).toJSON();
+    const images = await Images
+      .query('projectId')
+      .eq(projectId)
+      .where('deletedAt')
+      .not()
+      .exists()
+      .exec();
 
-    const [project] = (
-      await Projects
-        .query('id')
-        .eq(projectId)
-        .where('deletedAt')
-        .not()
-        .exists()
-        .exec()
-    ).toJSON();
+    const [project] = await Projects
+      .query('id')
+      .eq(projectId)
+      .where('deletedAt')
+      .not()
+      .exists()
+      .exec();
 
     const imagesFinished = images.filter(({ filteredImageLink }) => (filteredImageLink));
 
@@ -83,6 +79,6 @@ export const main = async (event) => {
     return `finished unified status ${status}`;
   } catch (error) {
     console.error('Error', { error });
-    throw error;
+    return `An error ocurred in unifiedStatus ${error.message}`;
   }
 };
