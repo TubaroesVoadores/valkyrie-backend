@@ -5,7 +5,7 @@ export const apiError = (error) => {
 
   let statusCode;
   const body = {};
-  console.log('werfqwe', { pedro: error.name });
+
   switch (error.name) {
     case 'InvalidInputError':
       statusCode = 400;

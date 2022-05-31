@@ -31,7 +31,12 @@ export class Model {
     return this;
   }
 
+  static not() {
+    return this;
+  }
+
   static exec() {
     return [];
   }
+
 }

@@ -1,7 +1,7 @@
 import * as dynamoose from './dynamoose';
 import { projectsSchema } from '../schemas';
 
-const proejctData = {
+const projectData = {
   area: 9,
   city: 'Belem',
   country: 'Brasil',
@@ -19,11 +19,11 @@ const proejctData = {
 const projects = {
   '3ea14f4b-934d-4258-91c9-fc8deb81e99a': {
     id: '3ea14f4b-934d-4258-91c9-fc8deb81e99a',
-    ...proejctData,
+    ...projectData,
   },
   '01351290-28b0-4bfc-b107-7bdbffa628f8': {
     id: '01351290-28b0-4bfc-b107-7bdbffa628f8',
-    ...proejctData,
+    ...projectData,
   },
 };
 
