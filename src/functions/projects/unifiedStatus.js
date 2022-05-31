@@ -30,7 +30,8 @@ const defineProjectStatus = (nativeForestArea, projectZone) => {
 
 /**
  * @name UnifiedStatus
- * @description This lambda is responsible for creating a unfied status for a project.
+ * @description This lambda is responsible determine the final status of a project
+ * considering information from image processing.
  * @param {Object} event - Base event object of AWS Lambda.
  * @param {Object} event.projectId - Project's id.
  * @command sls invoke local -f UnifiedStatus -p tests/mocks/Projects/unifiedStatus.json -s STAGE
