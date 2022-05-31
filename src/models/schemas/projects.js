@@ -18,9 +18,7 @@ export default {
       rangeKey: 'id',
       global: true,
     },
-  },
-  projectName: {
-    type: String,
+    required: true,
   },
   nativeForestArea: {
     type: Number,

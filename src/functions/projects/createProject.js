@@ -6,6 +6,7 @@ import {
   createImagesBucket,
 } from '../../utils';
 import { Projects } from '../../models';
+import { createProjectSchema } from '../../jsonschemas';
 
 const genereteImageLink = async (images) => {
   const links = await Promise.all(
@@ -54,7 +55,7 @@ export const main = async (event) => {
       area,
       email,
       images,
-    } = getEventParams(event);
+    } = getEventParams(event, createProjectSchema);
 
     const project = await Projects.create({
       name,
