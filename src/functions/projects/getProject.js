@@ -3,6 +3,7 @@ import {
   apiResponse,
   getEventParams,
   NotFoundError,
+  ForbiddenError,
 } from '../../utils';
 import { Images, Projects } from '../../models';
 
@@ -16,7 +17,7 @@ import { Images, Projects } from '../../models';
 
 export const main = async (event) => {
   try {
-    const { projectId } = getEventParams(event);
+    const { projectId, userId } = getEventParams(event);
 
     const [project] = await Projects
       .query('id')
@@ -26,9 +27,8 @@ export const main = async (event) => {
       .exists()
       .exec();
 
-    console.log(project);
-
     if (!project) throw new NotFoundError('Project not found!');
+    if (userId !== project.userId) throw new ForbiddenError('Trying to access another user\'s project!');
 
     const [images] = await Images
       .query('projectId')
