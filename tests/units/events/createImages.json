@@ -1,0 +1,73 @@
+{
+  "successEventWithLink": {
+    "body": {
+      "projectId": "id-ale-ato-rio-654",
+      "images": [
+        {
+          "image": "https://bucket.s3.amazonaws.com/event.jpg"       
+        }
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  },
+  "successEvent": {
+    "body": {
+      "projectId": "id-ale-ato-rio-654",
+      "images": [
+        {
+          "image": "base64:eqwerqwetqwerycvxg12334drt345edfgsdfgsdffwwqwq"       
+        }
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  },
+  "invalindInputEventNoImages": {
+    "body": {
+      "projectId": "id-ale-ato-rio-654",
+      "images": [
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  },
+  "invalindInputEventNoProjectId": {
+    "body": {
+      "images": [
+        {
+          "image": "https://bucket.s3.amazonaws.com/event.jpg"       
+        }
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  },
+  "invalindInputEventImageType": {
+    "body": {
+      "projectId": "id-ale-ato-rio-654",
+      "images": [
+        {
+          "image": 1       
+        }
+      ]
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  }
+}
