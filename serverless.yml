@@ -28,6 +28,7 @@ package:
     - .serverless/**
     - .git/**
     - node_modules/**
+    - assets/**
 
 functions:
   - ${file(sls/functions/projects.yml)}
