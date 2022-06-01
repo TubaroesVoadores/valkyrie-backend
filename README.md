@@ -1,7 +1,7 @@
 # About
 
 <p align="center">
-  <img width=570 src="assets/2022-05-27 08-56-57.gif">
+  <img width=570 src="assets/plat.gif">
 </p>
 
 Valkyrie is software to analyze and calculate the native vegetation area of a given terrain using python processing.
