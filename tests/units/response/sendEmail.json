@@ -1,0 +1,22 @@
+{
+  "successResponseEmailForms": {
+    "message": "Email sent successfully!",
+    "mailSent": {
+      "nameProject": "Computação amostra",
+      "description": "Forms description"
+    }
+  },
+  "invalidInputResponseEmailForms": {
+    "message": "Wrong entry format, instance.description is not of a type(s) number"
+  },
+  "successResponseLandingEmail": {
+    "message": "Email sent successfully!",
+    "mailSent": {
+      "nameProject": "Computação amostra",
+      "description": "Forms description"
+    }
+  },
+  "invalidInputResponseLandingEmail": {
+    "message": "Wrong entry format, instance.description is not of a type(s) number"
+  }
+}
