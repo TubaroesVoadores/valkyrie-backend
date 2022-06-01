@@ -34,7 +34,7 @@ Deploy all stack to AWS. You need IAM permision to run this command.
 - [![Gabriel Freitas](https://img.shields.io/github/followers/FreitasGa?label=Gabriel%20Freitas&style=style=for-the-badge)](https://github.com/FreitasGa)
 - [![Lucas Leal](https://img.shields.io/github/followers/FreitasGa?label=Lucas%20Leal&style=style=for-the-badge)](https://github.com/LucasXXI)
 - [![João Kikuchi](https://img.shields.io/github/followers/jvkikuchi?label=Jo%C3%A3o%20Kikuchi&style=style=for-the-badge)](https://github.com/jvkikuchi)
-- [![Pedro Luz](https://img.shields.io/github/followers/pedroaaluz?label=Pedro%20Luz&style=style=for-the-badge)]()
+- [![Pedro Luz](https://img.shields.io/github/followers/pedroaaluz?label=Pedro%20Luz&style=style=for-the-badge)](https://github.com/pedroaaluz)
 - [![Rodrigo Bitu](https://img.shields.io/github/followers/rodBitu?label=Rodrigo%20Bitu&style=style=for-the-badge)](https://github.com/rodbitu)
 
 
