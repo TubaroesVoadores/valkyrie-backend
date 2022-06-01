@@ -36,10 +36,10 @@ export class Images extends dynamoose.Model {
     return null;
   }
 
-  static async update({ id, ...rest }, attrs = {}) {
+  static async update({ id, }) {
     const image = images[id];
 
-    if (image) return { ...image, ...rest, ...attrs };
+    if (image) return { ...image};
     return null;
   }
 
