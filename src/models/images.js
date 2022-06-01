@@ -5,7 +5,7 @@ const schema = new dynamoose.Schema(
   imagesSchema,
   {
     saveUnknown: [
-      'data.**', // Assim vamos salvar valores desconhecidos só o que vierem dentro desse objetos data
+      'data.**',
     ],
     timestamps: false,
   },
@@ -16,6 +16,6 @@ export const Images = dynamoose.model(
   schema,
   {
     create: false,
-    waitForActive: false, // Para ativar o modelo depois da criação da tabela no dynamoDB
+    waitForActive: false,
   },
 );
