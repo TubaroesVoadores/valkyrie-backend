@@ -24,7 +24,7 @@ export const main = async (event) => {
       link,
     } = getEventParams(event);
 
-    const imageId = imagePath.split('.')[0];
+    const imageId = imagePath.replace('_resized_filtered', '').split('.')[0];
 
     const imageFiltered = await Images.update({
       id: imageId,

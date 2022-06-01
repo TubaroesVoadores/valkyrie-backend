@@ -1,0 +1,12 @@
+{
+  "successEvent": {
+    "body": {
+      "id": "111e2711-d708-4cec-a3d7-8e6c14d6ac6b.jpg",
+      "area": 3,
+      "lat": 38.98769411111111,
+      "log": -107.88787850000001,
+      "nativeForest": 0.5009697916666667,
+      "link": "https://image.s3.amazonaws.com/imageId.jpg"
+    }
+  }
+}

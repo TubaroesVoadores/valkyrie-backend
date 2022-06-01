@@ -7,17 +7,11 @@ import {
   createImagesBucket,
 } from '../../utils';
 import { Images, Projects } from '../../models';
+import { createImageSchema } from '../../jsonschemas';
 
 const callImageProcessor = async (images) => {
   const response = await Promise.all(images.map(async ({ s3link, id }) => {
-    console.log({
-      body: {
-        imageId: id,
-        link: s3link,
-      },
-    });
-
-    const { data } = await axios({
+    await axios({
       method: 'POST',
       url: 'https://4n28lapsp1.execute-api.us-east-1.amazonaws.com/dev/imageprocessing',
       data: {
@@ -27,8 +21,6 @@ const callImageProcessor = async (images) => {
         },
       },
     });
-
-    console.log(data);
   }));
 
   return response;
@@ -48,7 +40,7 @@ export const main = async (event) => {
     const {
       projectId,
       images: files,
-    } = getEventParams(event);
+    } = getEventParams(event, createImageSchema);
 
     const project = await Projects
       .query('id')

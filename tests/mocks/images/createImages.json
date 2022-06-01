@@ -4,9 +4,6 @@
     "images": [
       {
         "image": "https://backend-valkyrie-dev-images-bucket.s3.amazonaws.com/8b7f233c-a9a6-495c-a755-e9bffe77d0a1.jpg"       
-      },
-      {
-        "image": "https://backend-valkyrie-dev-images-bucket.s3.amazonaws.com/a6dcad88-fa62-4b50-8e75-fb93f7a9b310.jpg"       
       }
     ]
   },

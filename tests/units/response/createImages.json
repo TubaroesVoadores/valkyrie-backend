@@ -1,0 +1,26 @@
+{
+  "successResponseWithLink": {
+    "images": [
+      {
+        "createdAt": "2022-05-26T00:51:56Z",
+        "id": "6dfd8b63-8c22-4da8-9eab-d57c31b660ad",
+        "projectId": "id-ale-ato-rio-654",
+        "s3link": "https://bucket.s3.amazonaws.com/event.jpg"
+      }
+    ],
+    "message": "New images created!",
+    "projectId": "id-ale-ato-rio-654"
+  },
+  "successResponse": {
+    "images": [
+      {
+        "createdAt": "2022-05-26T00:51:56Z",
+        "id": "6dfd8b63-8c22-4da8-9eab-d57c31b660ad",
+        "projectId": "id-ale-ato-rio-654",
+        "s3link": "https://bucket.s3.amazonaws.com/image.jpg"
+      }
+    ],
+    "message": "New images created!",
+    "projectId": "id-ale-ato-rio-654"
+  }
+}
