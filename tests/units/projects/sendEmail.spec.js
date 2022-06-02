@@ -1,8 +1,6 @@
 import {
   successEventEmailForms,
-  invalidInputEventEmailForms,
   successEventLandingEmail,
-  invalidInputEventLandingEmail,
 } from '../events/sendEmail.json';
 import {
   emailForms,
@@ -20,8 +18,6 @@ import {
 jest.mock('../../../src/models');
 jest.mock('aws-sdk');
 
-const { mock } = require('nodemailer');
-
 describe('Testing emailForms API', () => {
   test('Should return 200 if success event', async () => {
     const response = await emailForms(successEventEmailForms);
@@ -32,22 +28,9 @@ describe('Testing emailForms API', () => {
   });
 
   test('Should return 404 if email forms is invalid', async () => {
-    let message;
-    const sentEmails = mock.getSentMail();
+    const response = await emailForms();
 
-    if (sentEmails.length < 0) {
-      message = {
-        message:
-          'Wrong entry format, instance.description is not of a type(s) number',
-      };
-    } else {
-      message = { message: 'Email sent successfully!' };
-    }
-    const response = await emailForms(invalidInputEventEmailForms);
-
-    const body = JSON.parse(response.body);
-
-    expect(body).toMatchObject(message);
+    expect(response.statusCode).toEqual(500);
   });
 });
 
@@ -61,22 +44,8 @@ describe('Testing landingEmail API', () => {
   });
 
   test('Should return 404 if landing email is invalid', async () => {
-    let message;
-    const sentEmails = mock.getSentMail();
+    const response = await landingEmail();
 
-    if (sentEmails.length < 0) {
-      message = {
-        message:
-          'Wrong entry format, instance.description is not of a type(s) number',
-      };
-    } else {
-      message = { message: 'Email sent successfully!' };
-    }
-
-    const response = await landingEmail(invalidInputEventLandingEmail);
-
-    const body = JSON.parse(response.body);
-
-    expect(body).toMatchObject(message);
+    expect(response.statusCode).toEqual(500);
   });
 });

@@ -10,34 +10,11 @@
       }
     }
   },
-  "invalidInputEventEmailForms": {
-    "body": {
-      "nameProject": "Computação amostra",
-      "description": 9
-    },
-    "requestContext": {
-      "identity": {
-        "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
-      }
-    }
-  },
   "successEventLandingEmail": {
     "body": {
       "name": "Computação amostra",
       "email": "valkyrie@gmail.com",
       "description": "Landing description"
-    },
-    "requestContext": {
-      "identity": {
-        "cognitoIdentityId": "us-east-1:94aae6fd-f0a3-46e7-a186-4bf41a1b2ba2"
-      }
-    }
-  },
-  "invalidInputEventLandingEmail": {
-    "body": {
-      "name": "Computação amostra",
-      "email": "valkyrie@gmail.com",
-      "description": 9
     },
     "requestContext": {
       "identity": {
