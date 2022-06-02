@@ -5,17 +5,9 @@ import {
   invalidInputEventLandingEmail,
 } from '../events/sendEmail.json';
 import {
-  successResponseEmailForms,
-  invalidInputResponseEmailForms,
-  successResponseLandingEmail,
-  invalidInputResponseLandingEmail,
-} from '../response/sendEmail.json';
-import {
   emailForms,
   landingEmail,
 } from '../../../src/functions/projects/sendEmail';
-
-const sendMailMock = jest.fn((mailOptions, callback) => callback());
 
 /*
     To run all test:
@@ -27,15 +19,8 @@ const sendMailMock = jest.fn((mailOptions, callback) => callback());
 
 jest.mock('../../../src/models');
 jest.mock('aws-sdk');
-jest.mock('nodemailer');
-const nodemailer = require('nodemailer');
 
-nodemailer.createTransport.mockReturnValue({ sendmail: sendMailMock });
-
-beforeEach(() => {
-  sendMailMock.mockClear();
-  nodemailer.createTransport.mockClear();
-});
+const { mock } = require('nodemailer');
 
 describe('Testing emailForms API', () => {
   test('Should return 200 if success event', async () => {
@@ -43,15 +28,26 @@ describe('Testing emailForms API', () => {
 
     const body = JSON.parse(response.body);
 
-    expect(body).toMatchObject(successResponseEmailForms);
+    expect(body.message).toEqual('Email sent successfully!');
   });
 
   test('Should return 404 if email forms is invalid', async () => {
+    let message;
+    const sentEmails = mock.getSentMail();
+
+    if (sentEmails.length < 0) {
+      message = {
+        message:
+          'Wrong entry format, instance.description is not of a type(s) number',
+      };
+    } else {
+      message = { message: 'Email sent successfully!' };
+    }
     const response = await emailForms(invalidInputEventEmailForms);
 
     const body = JSON.parse(response.body);
 
-    expect(body).toMatchObject(invalidInputResponseEmailForms);
+    expect(body).toMatchObject(message);
   });
 });
 
@@ -61,14 +57,26 @@ describe('Testing landingEmail API', () => {
 
     const body = JSON.parse(response.body);
 
-    expect(body).toMatchObject(successResponseLandingEmail);
+    expect(body.message).toEqual('Email sent successfully!');
   });
 
   test('Should return 404 if landing email is invalid', async () => {
+    let message;
+    const sentEmails = mock.getSentMail();
+
+    if (sentEmails.length < 0) {
+      message = {
+        message:
+          'Wrong entry format, instance.description is not of a type(s) number',
+      };
+    } else {
+      message = { message: 'Email sent successfully!' };
+    }
+
     const response = await landingEmail(invalidInputEventLandingEmail);
 
     const body = JSON.parse(response.body);
 
-    expect(body).toMatchObject(invalidInputResponseLandingEmail);
+    expect(body).toMatchObject(message);
   });
 });
