@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   successEvent,
   invalindInputEventNoImages,
@@ -11,7 +12,6 @@ import {
 } from '../response/createImages.json';
 import { main as createImage } from '../../../src/functions/images/createImage';
 import { Projects } from '../../../src/models';
-
 /*
   To run all test:
     npm run test
@@ -22,6 +22,9 @@ import { Projects } from '../../../src/models';
 
 jest.mock('../../../src/models');
 jest.mock('aws-sdk');
+jest.mock('axios');
+
+axios.mockImplementationOnce(() => ({ message: 'sent for processing successfully' }));
 
 describe('Testing createProject API', () => {
   test('Should return 200 if event with images link', async () => {
