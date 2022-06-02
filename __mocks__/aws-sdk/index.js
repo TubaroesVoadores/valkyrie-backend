@@ -13,6 +13,31 @@ AWS.Lambda.prototype.invoke = jest.fn(() => ({
       payload: "",
     }
   })),
+
+}));
+
+AWS.CognitoIdentityServiceProvider.prototype.adminCreateUser = jest.fn(() => ({
+    User: { 
+      Attributes: [ 
+         { 
+            Name: 'name',
+            Value: 'valkyrie'
+         },
+         { 
+           Name: 'email',
+           Value: 'valkyrie.cesupa@gmail.com'
+         },
+         {
+          Name: 'email_verified',
+          Value: 'true',
+        }
+      ],
+      Enabled: true,
+      UserCreateDate: '2022-05-26T00:51:56Z',
+      UserLastModifiedDate: '2022-05-26T00:51:56Z',
+      Username: 'valkyrie',
+      UserStatus: 'jest'  
+    }
 }));
 
 module.exports = AWS;

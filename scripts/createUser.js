@@ -2,13 +2,8 @@ const AWS = require('aws-sdk');
 
 require('dotenv').config();
 
-const registerUser = () => {
-  AWS.config.update({
-    region: 'us-east-1',
-  });
-
-  const cognitoidentityserviceprovider =
-    new AWS.CognitoIdentityServiceProvider();
+export const registerUser = async () => {
+  const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 
   const params = {
     UserPoolId: 'us-east-1_lpjZn9Wuk',
@@ -29,10 +24,14 @@ const registerUser = () => {
       },
     ],
   };
-  cognitoidentityserviceprovider.adminCreateUser(params, (err, data) => {
-    if (err) console.log(err, err.stack);
-    else console.log(data);
-  });
+
+  try {
+    const response = await cognitoidentityserviceprovider.adminCreateUser(params);
+
+    return response;
+  } catch (error) {
+    return 'Error while creating user';
+  }
 };
 
 registerUser();
